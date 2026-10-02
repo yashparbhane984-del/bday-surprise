@@ -1,0 +1,3303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- In-App Browser & Chrome Intent Detector -->
+  <script>
+// Instagram / In-App Browser Detection & Chrome Launcher
+(function() {
+  try {
+    const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+    const isInstagram = /Instagram|FBAN|FBAV|Line|Twitter|Snapchat/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+    if (isInstagram) {
+      const currentUrl = window.location.href;
+      
+      // If hosted on a web server (http/https)
+      if (/^https?:\/\//i.test(currentUrl)) {
+        const cleanUrl = currentUrl.replace(/^https?:\/\//i, '');
+        const chromeIntent = 'intent://' + cleanUrl + '#Intent;scheme=https;package=com.android.chrome;end';
+
+        // Attempt automated Chrome launch on Android
+        if (isAndroid) {
+          window.location.href = chromeIntent;
+        }
+
+        // Show visual guide overlay inside Instagram
+        const showGuidance = function() {
+          if (document.getElementById('insta-browser-guide')) return;
+          const overlay = document.createElement('div');
+          overlay.id = 'insta-browser-guide';
+          overlay.style.cssText = 'position:fixed;inset:0;z-index:9999999;background:rgba(8,5,13,0.96);backdrop-filter:blur(16px);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;text-align:center;';
+          
+          overlay.innerHTML = `
+            <div style="max-width:380px;width:100%;background:linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid rgba(245,158,11,0.4);border-radius:28px;padding:28px 22px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.9);">
+              <div style="font-size:52px;margin-bottom:12px;animation:pulse 2s infinite;">🌐✨</div>
+              <h2 style="font-size:20px;font-weight:900;margin-bottom:8px;color:#FDE68A;text-transform:uppercase;letter-spacing:0.05em;">Open in Google Chrome</h2>
+              <p style="font-size:13px;color:#E5E7EB;line-height:1.5;margin-bottom:20px;">
+                Instagram's in-app browser blocks audio autoplay & animations! For the real surprise with music, open this in <b>Chrome</b>.
+              </p>
+              
+              <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:16px 14px;font-size:13px;color:#F3F4F6;margin-bottom:22px;text-align:left;line-height:1.6;">
+                <div style="margin-bottom:10px;display:flex;align-items:flex-start;gap:8px;">
+                  <span style="background:#F59E0B;color:#000;font-weight:900;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">1</span>
+                  <span>Tap the <b>three dots (⋮ or ⋯)</b> in the top right corner of Instagram.</span>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:8px;">
+                  <span style="background:#EC4899;color:#fff;font-weight:900;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">2</span>
+                  <span>Select <b>"Open in Chrome"</b> (or "Open in external browser").</span>
+                </div>
+              </div>
+
+              ${isAndroid ? `
+              <a href="${chromeIntent}" style="display:block;width:100%;padding:14px;background:linear-gradient(to right,#F59E0B,#EC4899);color:#fff;font-weight:900;text-decoration:none;border-radius:16px;font-size:14px;letter-spacing:0.05em;margin-bottom:12px;box-shadow:0 10px 20px rgba(245,158,11,0.3);">
+                TAP TO OPEN IN CHROME ➔
+              </a>` : ''}
+
+              <button onclick="document.getElementById('insta-browser-guide').remove()" style="width:100%;padding:12px;background:rgba(255,255,255,0.08);color:#9CA3AF;font-weight:600;border:1px solid rgba(255,255,255,0.1);border-radius:14px;font-size:12px;cursor:pointer;">
+                Continue inside Instagram anyway
+              </button>
+            </div>
+          `;
+          document.body.appendChild(overlay);
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', showGuidance);
+        } else {
+          showGuidance();
+        }
+      }
+    }
+  } catch(e) {
+    console.error('In-app browser handler error:', e);
+  }
+})();
+
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Happy Birthday Chikkuuu [Asmita]! ✨🎂</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            handwriting: ['Caveat', 'cursive'],
+          },
+          colors: {
+            rosegold: {
+              100: '#FDF2F0',
+              200: '#FBE4E1',
+              300: '#F5C8C0',
+              400: '#EAA698',
+              500: '#DF8877',
+              600: '#C76A57',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background: 
+        radial-gradient(circle at 10% 15%, rgba(255, 209, 220, 0.9) 0%, transparent 45%),
+        radial-gradient(circle at 90% 15%, rgba(199, 210, 254, 0.9) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(254, 215, 170, 0.8) 0%, transparent 55%),
+        radial-gradient(circle at 85% 85%, rgba(233, 213, 255, 0.85) 0%, transparent 50%),
+        linear-gradient(135deg, #FFF1F2 0%, #FAF5FF 35%, #F0F9FF 70%, #FFF7ED 100%);
+      background-attachment: fixed;
+    }
+
+    /* Ambient animated ethereal glow orbs */
+    .glow-orb-1 {
+      position: fixed;
+      top: -12%;
+      left: -12%;
+      width: 65vw;
+      height: 65vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 182, 193, 0.5) 0%, transparent 70%);
+      filter: blur(55px);
+      z-index: 1;
+      animation: orbFloat1 20s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .glow-orb-2 {
+      position: fixed;
+      bottom: -15%;
+      right: -15%;
+      width: 70vw;
+      height: 70vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(186, 215, 255, 0.5) 0%, transparent 70%);
+      filter: blur(60px);
+      z-index: 1;
+      animation: orbFloat2 24s ease-in-out infinite alternate-reverse;
+      pointer-events: none;
+    }
+
+    @keyframes orbFloat1 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(45px, 35px) scale(1.12); }
+      100% { transform: translate(-35px, 55px) scale(0.95); }
+    }
+
+    @keyframes orbFloat2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-50px, -40px) scale(1.1); }
+      100% { transform: translate(30px, -20px) scale(0.92); }
+    }
+
+    /* Top Fairy Lights String */
+    #fairy-lights-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 65px;
+      z-index: 25;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .light-wire {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 35px;
+      border-bottom: 2px dashed rgba(70, 70, 80, 0.35);
+      border-radius: 50%/15px;
+    }
+
+    .fairy-bulb {
+      position: absolute;
+      width: 13px;
+      height: 18px;
+      border-radius: 50% 50% 45% 45%;
+      background: #FFE89C;
+      box-shadow: 0 0 14px 4px rgba(255, 214, 102, 0.9), 0 0 28px 8px rgba(255, 170, 0, 0.5);
+      animation: bulbGlow 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes bulbGlow {
+      0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 6px #FFD700); }
+      50% { opacity: 1; filter: drop-shadow(0 0 16px #FFA500); }
+    }
+
+    /* =======================================================
+       RESTORED EXACT PREVIOUS RED VELVET CURTAINS
+       Smooth, elegant 1.5s sliding transition
+       ======================================================= */
+    .curtain-wrapper {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 40;
+      pointer-events: none;
+      display: flex;
+    }
+
+    .curtain-half {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, #7F1D1D 0%, #991B1B 15%, #B91C1C 35%, #7F1D1D 55%, #991B1B 75%, #450A0A 100%);
+      box-shadow: inset 0 0 60px rgba(0,0,0,0.6), 0 0 30px rgba(0,0,0,0.5);
+      transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+      position: relative;
+      background-size: 40px 100%;
+    }
+
+    .curtain-left {
+      transform: translateX(0%);
+      border-right: 2px solid rgba(255, 215, 0, 0.4);
+    }
+    .curtain-right {
+      transform: translateX(0%);
+      border-left: 2px solid rgba(255, 215, 0, 0.4);
+    }
+
+    .curtains-open .curtain-left {
+      transform: translateX(-102%);
+    }
+    .curtains-open .curtain-right {
+      transform: translateX(102%);
+    }
+
+    /* =======================================================
+       WARM YELLOW LIGHTNING STRING WITH 4 HANGING PHOTOS
+       ======================================================= */
+    .hanging-lights-stage {
+      position: relative;
+      width: 100%;
+      padding: 8px 0 14px;
+    }
+
+    .hanging-lights-wire {
+      position: absolute;
+      top: 14px;
+      left: 1%;
+      width: 98%;
+      height: 24px;
+      border-bottom: 2.5px solid #F59E0B;
+      border-radius: 50%/15px;
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.7);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Glowing Warm Yellow Fairy Light Bulbs */
+    .warm-yellow-bulb {
+      position: absolute;
+      width: 11px;
+      height: 16px;
+      border-radius: 50% 50% 45% 45%;
+      background: #FEF08A;
+      box-shadow: 0 0 12px 3px rgba(250, 204, 21, 0.95), 0 0 25px 6px rgba(245, 158, 11, 0.7);
+      animation: warmBulbShimmer 1.8s ease-in-out infinite alternate;
+      z-index: 15;
+    }
+
+    @keyframes warmBulbShimmer {
+      0%, 100% { opacity: 0.85; transform: scale(0.95); filter: drop-shadow(0 0 8px #FBBF24); }
+      50% { opacity: 1; transform: scale(1.08); filter: drop-shadow(0 0 18px #F59E0B); }
+    }
+
+    /* Hanging Polaroid Photo Frame */
+    .hanging-photo-card {
+      background: #FFFFFF;
+      padding: 5px 5px 10px 5px;
+      border-radius: 12px;
+      box-shadow: 
+        0 10px 20px -5px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(245, 158, 11, 0.4),
+        0 0 18px rgba(254, 240, 138, 0.35);
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      transform-origin: top center;
+    }
+
+    .hanging-photo-card:hover, .hanging-photo-card:active {
+      transform: scale(1.08) rotate(0deg) !important;
+      z-index: 30;
+      box-shadow: 
+        0 16px 28px -4px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(245, 158, 11, 0.8);
+    }
+
+    /* Golden Photo Clip */
+    .hanging-clip {
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 18px;
+      background: linear-gradient(180deg, #FDE68A 0%, #D97706 100%);
+      border: 1px solid #B45309;
+      border-radius: 3px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      z-index: 20;
+    }
+
+    /* Gentle Natural Pendulum Sway */
+    @keyframes swayP1 {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(2deg); }
+    }
+    @keyframes swayP2 {
+      0%, 100% { transform: rotate(3deg); }
+      50% { transform: rotate(-2.5deg); }
+    }
+    @keyframes swayP3 {
+      0%, 100% { transform: rotate(-2.5deg); }
+      50% { transform: rotate(3deg); }
+    }
+    @keyframes swayP4 {
+      0%, 100% { transform: rotate(2deg); }
+      50% { transform: rotate(-2.5deg); }
+    }
+
+    .sway-1 { animation: swayP1 4.5s ease-in-out infinite alternate; }
+    .sway-2 { animation: swayP2 5.0s ease-in-out infinite alternate 0.4s; }
+    .sway-3 { animation: swayP3 4.2s ease-in-out infinite alternate 0.8s; }
+    .sway-4 { animation: swayP4 4.8s ease-in-out infinite alternate 1.2s; }
+
+    /* Ultra-Luxurious Frosted Glassmorphism Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(32px) saturate(210%);
+      -webkit-backdrop-filter: blur(32px) saturate(210%);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 
+        0 25px 50px -12px rgba(223, 136, 119, 0.22),
+        0 0 0 1px rgba(234, 166, 152, 0.45),
+        inset 0 1.5px 3px rgba(255, 255, 255, 0.95),
+        inset 0 -1.5px 2px rgba(223, 136, 119, 0.15);
+      border-radius: 36px;
+      position: relative;
+    }
+
+    /* Glowing, animated rose-gold border shimmer */
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 37px;
+      padding: 1.5px;
+      background: linear-gradient(135deg, rgba(245, 200, 192, 0.95), rgba(223, 136, 119, 0.5), rgba(199, 210, 254, 0.8), rgba(234, 166, 152, 0.9));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: roseBorderShimmer 6s linear infinite;
+    }
+
+    @keyframes roseBorderShimmer {
+      0% { opacity: 0.7; filter: hue-rotate(0deg); }
+      50% { opacity: 1; filter: hue-rotate(20deg); }
+      100% { opacity: 0.7; filter: hue-rotate(0deg); }
+    }
+
+    /* Keypad button */
+    .keypad-btn {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(223, 136, 119, 0.35);
+      box-shadow: 
+        0 6px 14px -3px rgba(223, 136, 119, 0.18),
+        inset 0 1px 2px rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+      touch-action: manipulation;
+    }
+
+    .keypad-btn:active {
+      transform: scale(0.92);
+      background: rgba(255, 235, 235, 0.92);
+      border-color: rgba(223, 136, 119, 0.75);
+      box-shadow: 0 2px 6px rgba(223, 136, 119, 0.3), inset 0 2px 4px rgba(223, 136, 119, 0.2);
+    }
+
+    /* Screen shake on incorrect code */
+    .shake-card {
+      animation: shakeAnim 0.52s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    @keyframes shakeAnim {
+      10%, 90% { transform: translate3d(-3px, 0, 0); }
+      20%, 80% { transform: translate3d(5px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+      40%, 60% { transform: translate3d(6px, 0, 0); }
+    }
+
+    /* Floating hint animation */
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .floating-hint {
+      animation: floatY 2.2s ease-in-out infinite;
+    }
+
+    /* Candle flame flickering */
+    @keyframes flameFlicker {
+      0%, 100% {
+        transform: scale(1) rotate(-1deg);
+        filter: drop-shadow(0 0 12px rgba(255, 170, 0, 0.95)) drop-shadow(0 0 24px rgba(255, 90, 0, 0.6));
+      }
+      25% {
+        transform: scale(1.08, 0.96) rotate(2deg);
+        filter: drop-shadow(0 0 16px rgba(255, 190, 40, 1)) drop-shadow(0 0 28px rgba(255, 110, 20, 0.7));
+      }
+      50% {
+        transform: scale(0.95, 1.05) rotate(-2deg);
+        filter: drop-shadow(0 0 11px rgba(255, 150, 0, 0.9)) drop-shadow(0 0 22px rgba(255, 70, 0, 0.5));
+      }
+      75% {
+        transform: scale(1.04, 1) rotate(1deg);
+        filter: drop-shadow(0 0 15px rgba(255, 180, 20, 0.95)) drop-shadow(0 0 26px rgba(255, 100, 10, 0.65));
+      }
+    }
+
+    .candle-flame {
+      animation: flameFlicker 1.5s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    /* Screen transitions */
+    .app-screen {
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .screen-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.94) translateY(20px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .screen-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+      position: relative;
+    }
+
+    /* Typing cursor */
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.15em;
+      vertical-align: text-bottom;
+      background: #DF8877;
+      animation: blink 0.8s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  
+    /* =======================================================
+       CINEMATIC BOMB & HOLLYWOOD MOVIE END CREDITS
+       ======================================================= */
+    @keyframes rollBombIn {
+      0% {
+        left: -140px;
+        transform: translateY(-50%) rotate(0deg);
+      }
+      65% {
+        left: 54%;
+        transform: translate(-50%, -50%) rotate(980deg);
+      }
+      80% {
+        left: 48%;
+        transform: translate(-50%, -50%) rotate(1040deg);
+      }
+      100% {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(1080deg);
+      }
+    }
+
+    @keyframes bombFuriousShake {
+      0%, 100% { transform: translate(-50%, -50%) scale(1.0) rotate(0deg); }
+      20% { transform: translate(calc(-50% - 6px), calc(-50% + 4px)) scale(1.08) rotate(-5deg); }
+      40% { transform: translate(calc(-50% + 6px), calc(-50% - 4px)) scale(1.16) rotate(5deg); }
+      60% { transform: translate(calc(-50% - 7px), calc(-50% - 3px)) scale(1.24) rotate(-4deg); filter: drop-shadow(0 0 25px #ef4444) brightness(1.3); }
+      80% { transform: translate(calc(-50% + 7px), calc(-50% + 3px)) scale(1.32) rotate(4deg); filter: drop-shadow(0 0 40px #dc2626) brightness(1.6); }
+    }
+
+    @keyframes sparkFlicker {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.4) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 10px #f59e0b); }
+    }
+
+    @keyframes smokePuffExpand {
+      0% {
+        transform: scale(0.05);
+        opacity: 0.2;
+      }
+      35% {
+        transform: scale(3.5);
+        opacity: 0.95;
+      }
+      100% {
+        transform: scale(9.0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes goldGlitterFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.95; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes goldGlowText {
+      0%, 100% { text-shadow: 0 0 12px rgba(251, 191, 36, 0.6), 0 0 22px rgba(245, 158, 11, 0.4); }
+      50% { text-shadow: 0 0 20px rgba(251, 191, 36, 0.95), 0 0 40px rgba(245, 158, 11, 0.8), 0 0 60px rgba(217, 119, 6, 0.6); }
+    }
+
+    .gold-glow-title {
+      animation: goldGlowText 2.5s ease-in-out infinite alternate;
+    }
+
+    .film-grain-overlay {
+      background: radial-gradient(circle at 50% 50%, rgba(20, 20, 28, 0.25) 0%, rgba(5, 5, 8, 0.95) 100%);
+    }
+
+  
+    .shake-impact {
+      animation: screenCameraShake 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    .volumetric-smoke-puff {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(16px);
+      mix-blend-mode: normal;
+      will-change: transform, opacity;
+    }
+
+  
+    /* Review Screen & Star Glow */
+    .star-btn {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+  
+    /* =======================================================
+       SECRET SECTION: RACE, SURVIVAL & BUDDHAPA ANIMATIONS
+       ======================================================= */
+    @keyframes caneTap {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-12deg) translateY(-4px); }
+    }
+    @keyframes grannyTremble {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-3px) rotate(-1deg); }
+      75% { transform: translateY(2px) rotate(1deg); }
+    }
+    @keyframes pulseGlowGold {
+      0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
+      50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.8), 0 0 50px rgba(239, 68, 68, 0.4); }
+    }
+    .granny-cane {
+      transform-origin: top center;
+      animation: caneTap 1.2s ease-in-out infinite;
+    }
+    .granny-figure {
+      animation: grannyTremble 2.0s ease-in-out infinite;
+    }
+    .counter-digit-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 1.25rem;
+      padding: 1rem 0.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+  </style>
+</head>
+<body class="relative min-h-screen w-full flex items-center justify-center p-3 sm:p-6 overflow-x-hidden">
+
+  <!-- Ambient ethereal glow backdrop -->
+  <div class="glow-orb-1"></div>
+  <div class="glow-orb-2"></div>
+
+  <!-- Top Fairy Lights String at Top -->
+  <div id="fairy-lights-container">
+    <div class="light-wire"></div>
+    <div class="fairy-bulb" style="left: 6%; top: 22px; animation-delay: 0s; background: #FFE082;"></div>
+    <div class="fairy-bulb" style="left: 17%; top: 29px; animation-delay: 0.4s; background: #FFAB91;"></div>
+    <div class="fairy-bulb" style="left: 28%; top: 32px; animation-delay: 0.8s; background: #FFF59D;"></div>
+    <div class="fairy-bulb" style="left: 39%; top: 30px; animation-delay: 1.2s; background: #F48FB1;"></div>
+    <div class="fairy-bulb" style="left: 50%; top: 34px; animation-delay: 0.2s; background: #FFE082;"></div>
+    <div class="fairy-bulb" style="left: 61%; top: 30px; animation-delay: 0.7s; background: #CE93D8;"></div>
+    <div class="fairy-bulb" style="left: 72%; top: 32px; animation-delay: 1.5s; background: #90CAF9;"></div>
+    <div class="fairy-bulb" style="left: 83%; top: 29px; animation-delay: 0.3s; background: #A5D6A7;"></div>
+    <div class="fairy-bulb" style="left: 94%; top: 22px; animation-delay: 0.9s; background: #FFE082;"></div>
+  </div>
+
+  <!-- Restored Original Red Velvet Curtains -->
+  <div id="curtains" class="curtain-wrapper curtains-open">
+    <div class="curtain-half curtain-left"></div>
+    <div class="curtain-half curtain-right"></div>
+  </div>
+
+  <!-- Floating Audio BGM Toggle Button -->
+  <button id="bgm-toggle-btn" onclick="toggleBGM()" class="fixed top-4 right-4 z-50 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white border border-rosegold-400/50 shadow-md backdrop-blur-md text-xs font-bold text-gray-700 flex items-center space-x-1.5 transition-all active:scale-95">
+    <span id="bgm-icon">🎵</span>
+    <span id="bgm-label">Soft BGM</span>
+  </button>
+<!-- Unified 60fps Particle Canvas: Live Wallpaper, Interactive Trail, Confetti, Hearts, Balloons, Smoke, Fireworks -->
+  <canvas id="main-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-10"></canvas>
+
+  <!-- Centered App Container -->
+  <main class="w-full max-w-[430px] relative z-20 flex flex-col items-center justify-center my-auto py-2">
+
+    <!-- ============================================== -->
+    <!-- SCREEN 1: SECRET KEYPAD VAULT (PASSWORD GATE)  -->
+    <!-- ============================================== -->
+    <div id="screen-1" class="app-screen screen-active w-full">
+      <div id="vault-card" class="glass-card p-6 sm:p-8 flex flex-col items-center text-center">
+        
+        <!-- Vault Icon Emblem -->
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rosegold-300/40 via-white/80 to-purple-200/50 border border-white/80 shadow-md flex items-center justify-center mb-4 relative">
+          <span class="text-3xl filter drop-shadow">🔒</span>
+          <div class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-white animate-pulse"></div>
+        </div>
+
+        <!-- Title Header -->
+        <h1 class="font-outfit text-2xl sm:text-[1.65rem] font-bold text-gray-800 tracking-tight leading-snug mb-1">
+          A Special Vault For My Bestest 🔒
+        </h1>
+        <p class="text-xs sm:text-sm text-gray-500 font-medium mb-6">
+          Enter the secret 4-digit passcode
+        </p>
+
+        <!-- Masked PIN Indicator Dots -->
+        <div class="flex items-center justify-center space-x-4 mb-5">
+          <div id="pin-dot-0" class="w-4 h-4 rounded-full border-2 border-rosegold-500/50 bg-white/60 transition-all duration-200"></div>
+          <div id="pin-dot-1" class="w-4 h-4 rounded-full border-2 border-rosegold-500/50 bg-white/60 transition-all duration-200"></div>
+          <div id="pin-dot-2" class="w-4 h-4 rounded-full border-2 border-rosegold-500/50 bg-white/60 transition-all duration-200"></div>
+          <div id="pin-dot-3" class="w-4 h-4 rounded-full border-2 border-rosegold-500/50 bg-white/60 transition-all duration-200"></div>
+        </div>
+
+        <!-- Playful Floating Error Hint -->
+        <div id="vault-hint" class="min-h-[30px] flex items-center justify-center mb-2 transition-all duration-300 opacity-0 translate-y-1">
+          <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-rose-100/90 border border-rose-300 text-rose-700 text-xs font-semibold shadow-sm floating-hint">
+            <span>Wrong code! Try 0610 🤭</span>
+          </div>
+        </div>
+
+        <!-- Sleek Digital Keypad -->
+        <div class="grid grid-cols-3 gap-3 w-full max-w-[280px] mx-auto">
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('1')">1</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('2')">2</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('3')">3</button>
+
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('4')">4</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('5')">5</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('6')">6</button>
+
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('7')">7</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('8')">8</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('9')">9</button>
+
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center justify-center active:text-rose-600" onclick="clearPIN()">Clear</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-xl font-outfit font-semibold text-gray-700 flex items-center justify-center" onclick="handleKeyPress('0')">0</button>
+          <button class="keypad-btn h-13 py-3 rounded-2xl text-lg font-semibold text-gray-500 flex items-center justify-center active:text-rose-600" onclick="deleteDigit()">⌫</button>
+        </div>
+
+        <div class="mt-5 text-[11px] text-gray-400 font-medium">
+          Protected with infinite bestie love ✨
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 1.5: SETTING UP THE STAGE (FROM VIDEO)  -->
+    <!-- ============================================== -->
+    <div id="screen-stage" class="app-screen screen-hidden w-full">
+      <div class="glass-card p-5 sm:p-7 flex flex-col items-center text-center">
+        
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-200 via-pink-200 to-purple-200 border border-white shadow-md flex items-center justify-center mb-3">
+          <span class="text-2xl">🎭</span>
+        </div>
+
+        <span class="text-xs font-bold uppercase tracking-widest text-rosegold-600 mb-1">Interactive Stage Director</span>
+        <h2 id="stage-title" class="font-outfit text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight mb-2">
+          The Stage is Set...
+        </h2>
+        
+        <p id="stage-desc" class="text-xs sm:text-sm text-gray-500 font-medium mb-4">
+          Tap each step to prepare Asmita's royal surprise!
+        </p>
+
+        <!-- Dynamic Action Button for Stage Setup -->
+        <button id="stage-action-btn" onclick="handleStageStep()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-rosegold-500 via-pink-500 to-purple-500 text-white font-outfit font-bold text-base shadow-lg shadow-pink-300/40 border border-white/60 hover:brightness-105 active:scale-95 transition-all flex items-center justify-center space-x-2">
+          <span id="stage-btn-icon">💡</span>
+          <span id="stage-btn-text">Turn on Lights</span>
+        </button>
+
+        <!-- Stage Progress Indicator Dots -->
+        <div class="flex items-center justify-center space-x-3 mt-5">
+          <div id="stage-step-1" class="w-2.5 h-2.5 rounded-full bg-rosegold-500"></div>
+          <div id="stage-step-2" class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+          <div id="stage-step-3" class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+          <div id="stage-step-4" class="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 2: ROYAL BIRTHDAY GREETING & CELEBRATION  -->
+    <!-- ============================================== -->
+    <div id="screen-2" class="app-screen screen-hidden w-full">
+      <div class="glass-card p-5 sm:p-7 flex flex-col items-center text-center">
+        
+        <!-- Celebration Badge -->
+        <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-pink-100 to-purple-100 border border-pink-200/80 text-rosegold-600 text-xs font-semibold mb-3 shadow-sm">
+          <span>✨</span>
+          <span>SPECIAL BESTIE EDITION</span>
+          <span>✨</span>
+        </div>
+
+        <!-- Exquisite Glassmorphism Header with Typing Effect -->
+        <div class="min-h-[85px] flex items-center justify-center px-1 mb-1">
+          <h2 id="typing-header" class="font-outfit text-2xl sm:text-[1.7rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 tracking-tight leading-tight">
+          </h2>
+          <span id="typing-cursor" class="typing-cursor ml-1"></span>
+        </div>
+
+        <!-- Warm Subtitle -->
+        <p id="greeting-sub" class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed mb-4 opacity-0 transition-opacity duration-700">
+          The universe is celebrating you today, Madam jii! A special birthday cake is waiting just for you... 🎂✨
+        </p>
+
+        <!-- Continue Button -->
+        <button id="btn-to-cake" onclick="triggerHeartsAndGoToCake()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rosegold-500 via-pink-400 to-purple-400 text-white font-outfit font-bold text-base shadow-lg shadow-pink-300/40 border border-white/60 hover:brightness-105 active:scale-98 transition-all flex items-center justify-center space-x-2">
+          <span>Open Birthday Cake</span>
+          <span class="text-xl">🎂</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 3: CAKE & INTERACTIVE CANDLE BLOWING   -->
+    <!-- ============================================== -->
+    <div id="screen-3" class="app-screen screen-hidden w-full">
+      <div id="cake-card" class="glass-card p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-500">
+        
+        <!-- Header status -->
+        <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold mb-2">
+          <span>🕯️</span>
+          <span id="candles-counter-text">5 Candles Glowing</span>
+        </div>
+
+        <h2 class="font-outfit text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight mb-1">
+          Make a Birthday Wish!
+        </h2>
+        
+        <!-- Required Instruction Badge -->
+        <div class="inline-block px-3.5 py-1.5 rounded-full bg-white/80 border border-pink-200 shadow-sm text-xs sm:text-sm font-semibold text-pink-600 mb-5 animate-bounce">
+          (Tap each candle to blow them out! 🌬️)
+        </div>
+
+        <!-- Centered Birthday Cake Illustration with 5 Flickering Candles -->
+        <div class="relative w-64 h-64 sm:w-72 sm:h-72 mx-auto flex items-center justify-center my-1">
+          
+          <!-- Cake Glow Backlight -->
+          <div id="cake-ambient-glow" class="absolute inset-4 rounded-full bg-gradient-to-tr from-amber-300/40 via-pink-300/40 to-purple-300/30 filter blur-2xl transition-all duration-700"></div>
+
+          <!-- SVG Cake Graphic -->
+          <svg viewBox="0 0 300 300" class="w-full h-full relative z-10 overflow-visible">
+            <defs>
+              <linearGradient id="plateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="100%" stop-color="#E2E8F0"/>
+              </linearGradient>
+
+              <linearGradient id="cakeBottomGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFE4E6"/>
+                <stop offset="50%" stop-color="#FED7AA"/>
+                <stop offset="100%" stop-color="#FDBA74"/>
+              </linearGradient>
+
+              <linearGradient id="cakeTopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFF1F2"/>
+                <stop offset="100%" stop-color="#FECDD3"/>
+              </linearGradient>
+
+              <linearGradient id="frostingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="50%" stop-color="#FFF0F5"/>
+                <stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+
+              <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#FF3B30"/>
+                <stop offset="35%" stop-color="#FF9500"/>
+                <stop offset="70%" stop-color="#FFCC00"/>
+                <stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+
+              <linearGradient id="candle1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FDA4AF"/>
+                <stop offset="100%" stop-color="#FB7185"/>
+              </linearGradient>
+              <linearGradient id="candle2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#BAE6FD"/>
+                <stop offset="100%" stop-color="#60A5FA"/>
+              </linearGradient>
+              <linearGradient id="candle3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#DDD6FE"/>
+                <stop offset="100%" stop-color="#A78BFA"/>
+              </linearGradient>
+              <linearGradient id="candle4Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FDE68A"/>
+                <stop offset="100%" stop-color="#FBBF24"/>
+              </linearGradient>
+              <linearGradient id="candle5Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#A7F3D0"/>
+                <stop offset="100%" stop-color="#34D399"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Plate stand -->
+            <ellipse cx="150" cy="265" rx="125" ry="18" fill="rgba(0,0,0,0.06)" />
+            <path d="M 40 250 C 40 265, 260 265, 260 250 L 255 242 C 255 235, 45 235, 45 242 Z" fill="url(#plateGrad)" stroke="#CBD5E1" stroke-width="1.5"/>
+
+            <!-- Cake Bottom Tier -->
+            <path d="M 60 185 C 60 170, 240 170, 240 185 L 240 235 C 240 255, 60 255, 60 235 Z" fill="url(#cakeBottomGrad)" stroke="#FDBA74" stroke-width="1"/>
+            
+            <!-- Bottom Frosting Scallops -->
+            <path d="M 60 190 Q 75 210, 90 190 Q 105 215, 120 190 Q 135 220, 150 190 Q 165 215, 180 190 Q 195 210, 210 190 Q 225 215, 240 190 L 240 185 C 240 170, 60 170, 60 185 Z" fill="url(#frostingGrad)"/>
+
+            <!-- Cake Top Tier -->
+            <path d="M 85 130 C 85 118, 215 118, 215 130 L 215 178 C 215 192, 85 192, 85 178 Z" fill="url(#cakeTopGrad)" stroke="#FECDD3" stroke-width="1"/>
+
+            <!-- Top Frosting Scallops -->
+            <path d="M 85 135 Q 98 152, 110 135 Q 123 156, 136 135 Q 150 160, 164 135 Q 177 155, 190 135 Q 202 152, 215 135 L 215 130 C 215 118, 85 118, 85 130 Z" fill="url(#frostingGrad)"/>
+
+            <!-- Pearls and Sprinkles -->
+            <circle cx="100" cy="145" r="2.5" fill="#F43F5E"/>
+            <circle cx="120" cy="150" r="2" fill="#8B5CF6"/>
+            <circle cx="140" cy="143" r="2.5" fill="#3B82F6"/>
+            <circle cx="160" cy="148" r="2" fill="#F59E0B"/>
+            <circle cx="180" cy="144" r="2.5" fill="#10B981"/>
+            <circle cx="200" cy="149" r="2" fill="#EC4899"/>
+
+            <circle cx="80" cy="205" r="3" fill="#F43F5E"/>
+            <circle cx="110" cy="215" r="2.5" fill="#3B82F6"/>
+            <circle cx="140" cy="208" r="3" fill="#F59E0B"/>
+            <circle cx="170" cy="216" r="2.5" fill="#10B981"/>
+            <circle cx="200" cy="209" r="3" fill="#8B5CF6"/>
+            <circle cx="225" cy="215" r="2.5" fill="#EC4899"/>
+
+            <!-- 5 Interactive Candles -->
+            <!-- Candle 1 -->
+            <g id="candle-group-0" class="cursor-pointer" onclick="blowCandle(0, 105, 78)">
+              <rect x="90" y="55" width="30" height="75" fill="transparent"/>
+              <rect x="101" y="90" width="8" height="36" rx="3" fill="url(#candle1Grad)" stroke="#FB7185" stroke-width="0.75"/>
+              <line x1="105" y1="83" x2="105" y2="90" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+              <g id="flame-0" class="candle-flame">
+                <path d="M 105 68 C 98 78, 101 84, 105 84 C 109 84, 112 78, 105 68 Z" fill="url(#flameGrad)" />
+                <ellipse cx="105" cy="81" rx="2.5" ry="3" fill="#FFFFFF"/>
+              </g>
+            </g>
+
+            <!-- Candle 2 -->
+            <g id="candle-group-1" class="cursor-pointer" onclick="blowCandle(1, 127, 72)">
+              <rect x="113" y="50" width="30" height="75" fill="transparent"/>
+              <rect x="123" y="85" width="8" height="40" rx="3" fill="url(#candle2Grad)" stroke="#60A5FA" stroke-width="0.75"/>
+              <line x1="127" y1="78" x2="127" y2="85" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+              <g id="flame-1" class="candle-flame">
+                <path d="M 127 62 C 120 72, 123 78, 127 78 C 131 78, 134 72, 127 62 Z" fill="url(#flameGrad)" />
+                <ellipse cx="127" cy="75" rx="2.5" ry="3" fill="#FFFFFF"/>
+              </g>
+            </g>
+
+            <!-- Candle 3 (Center) -->
+            <g id="candle-group-2" class="cursor-pointer" onclick="blowCandle(2, 150, 68)">
+              <rect x="135" y="45" width="30" height="75" fill="transparent"/>
+              <rect x="146" y="82" width="8" height="44" rx="3" fill="url(#candle3Grad)" stroke="#A78BFA" stroke-width="0.75"/>
+              <line x1="150" y1="74" x2="150" y2="82" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+              <g id="flame-2" class="candle-flame">
+                <path d="M 150 56 C 143 67, 146 74, 150 74 C 154 74, 157 67, 150 56 Z" fill="url(#flameGrad)" />
+                <ellipse cx="150" cy="71" rx="2.5" ry="3" fill="#FFFFFF"/>
+              </g>
+            </g>
+
+            <!-- Candle 4 -->
+            <g id="candle-group-3" class="cursor-pointer" onclick="blowCandle(3, 173, 72)">
+              <rect x="158" y="50" width="30" height="75" fill="transparent"/>
+              <rect x="169" y="85" width="8" height="40" rx="3" fill="url(#candle4Grad)" stroke="#FBBF24" stroke-width="0.75"/>
+              <line x1="173" y1="78" x2="173" y2="85" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+              <g id="flame-3" class="candle-flame">
+                <path d="M 173 62 C 166 72, 169 78, 173 78 C 177 78, 180 72, 173 62 Z" fill="url(#flameGrad)" />
+                <ellipse cx="173" cy="75" rx="2.5" ry="3" fill="#FFFFFF"/>
+              </g>
+            </g>
+
+            <!-- Candle 5 -->
+            <g id="candle-group-4" class="cursor-pointer" onclick="blowCandle(4, 195, 78)">
+              <rect x="180" y="55" width="30" height="75" fill="transparent"/>
+              <rect x="191" y="90" width="8" height="36" rx="3" fill="url(#candle5Grad)" stroke="#34D399" stroke-width="0.75"/>
+              <line x1="195" y1="83" x2="195" y2="90" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+              <g id="flame-4" class="candle-flame">
+                <path d="M 195 68 C 188 78, 191 84, 195 84 C 199 84, 202 78, 195 68 Z" fill="url(#flameGrad)" />
+                <ellipse cx="195" cy="81" rx="2.5" ry="3" fill="#FFFFFF"/>
+              </g>
+            </g>
+
+          </svg>
+        </div>
+
+        <!-- Candle Progress Indicators -->
+        <div class="flex items-center justify-center space-x-2 mt-3">
+          <span id="dot-candle-0" class="text-lg transition-transform duration-300">🔥</span>
+          <span id="dot-candle-1" class="text-lg transition-transform duration-300">🔥</span>
+          <span id="dot-candle-2" class="text-lg transition-transform duration-300">🔥</span>
+          <span id="dot-candle-3" class="text-lg transition-transform duration-300">🔥</span>
+          <span id="dot-candle-4" class="text-lg transition-transform duration-300">🔥</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SCREEN 4: GRAND FINALE & ULTIMATE NOTE REVEAL  -->
+    <!-- ============================================== -->
+    <div id="screen-4" class="app-screen screen-hidden w-full">
+      <div id="note-card" class="glass-card p-6 sm:p-8 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
+        
+        <!-- Luxury Header Badge -->
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-100 via-pink-100 to-purple-100 border border-rosegold-400/50 shadow-sm mb-4">
+          <span class="text-sm">👑</span>
+          <span class="text-xs font-bold tracking-wider uppercase text-rosegold-600">Forever Best Friends</span>
+          <span class="text-sm">✨</span>
+        </div>
+
+        <!-- Envelope Emblem -->
+        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 via-rosegold-500 to-purple-500 flex items-center justify-center text-white shadow-lg shadow-pink-400/30 mb-3 border-2 border-white">
+          <span class="text-2xl">💌</span>
+        </div>
+
+        <h3 class="font-outfit text-xl sm:text-2xl font-black text-gray-800 tracking-tight mb-4">
+          To My Favorite Human In The World
+        </h3>
+
+        <!-- The Message Body with Sign-Off Credit -->
+        <div class="relative w-full p-5 sm:p-6 rounded-2xl bg-white/65 border border-pink-200/70 shadow-inner backdrop-blur-md mb-6 text-left">
+          <div class="text-pink-300/40 text-4xl font-serif absolute top-2 left-3 select-none leading-none">“</div>
+          
+          <p class="font-sans text-gray-800 text-sm sm:text-[0.975rem] font-medium leading-relaxed tracking-normal relative z-10 whitespace-pre-line mb-3">
+Happy bday, my mahila mitr! 🎂🥳 Wishing u a day blessed with happiness & joy. ✨ May ur bday be as amazing as u r—the only frnd on whom I feel I have the right to irritate & disturb! 🤭 You deserve all the happiness in the world today & every day. 🌍❤️ Im so lucky to have a best friend like u! 🙌
+          </p>
+          
+          <!-- Credits Signature -->
+          <div class="flex justify-end items-center pt-2 border-t border-pink-100/80 relative z-10">
+            <span class="font-handwriting text-xl sm:text-2xl font-bold text-rosegold-600 tracking-wide">- yash parbhane ✨</span>
+          </div>
+
+          <div class="text-pink-300/40 text-4xl font-serif absolute bottom-1 right-4 select-none leading-none">”</div>
+        </div>
+        <!-- Next Button leading to Bomb Explosion & Movie End Credits -->
+        <button id="btn-next-to-credits" onclick="triggerBombAndCredits()" class="w-full mb-4 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-purple-600 via-rose-500 to-amber-500 text-white font-outfit font-black text-sm tracking-wider uppercase shadow-xl shadow-pink-500/30 border border-white/60 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center space-x-2 animate-bounce">
+          <span>NEXT</span>
+          <span class="text-base">🎬 💣 ➔</span>
+        </button>
+        <!-- Festive Card Actions -->
+        <div class="w-full flex items-center justify-between gap-2 pt-2 border-t border-rosegold-300/40">
+          <div class="text-xs font-semibold text-gray-500 flex items-center space-x-1">
+            <span>🎂 Besties Forever</span>
+          </div>
+
+          <button onclick="restartExperience()" class="px-4 py-2 rounded-xl bg-white/80 hover:bg-white text-rosegold-600 text-xs font-bold border border-rosegold-300 shadow-sm active:scale-95 transition-all flex items-center space-x-1.5">
+            <span>Replay</span>
+            <span>🔁</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  
+  <!-- ============================================================== -->
+  <!-- SCREEN: ROLLING BOMB & EXPLOSION OVERLAY -->
+  <!-- ============================================================== -->
+  <div id="bomb-overlay" class="fixed inset-0 z-50 pointer-events-none hidden flex items-center justify-center overflow-hidden">
+    <!-- Dimmer -->
+    <div id="bomb-dimmer" class="absolute inset-0 bg-black/75 backdrop-blur-md opacity-0 transition-opacity duration-500"></div>
+
+    <!-- Rolling Comic Bomb -->
+    <div id="rolling-bomb" class="absolute top-1/2 select-none" style="left: -140px; transform: translateY(-50%);">
+      <div class="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center">
+        
+        <!-- Burning Fuse Cord with Animated Sparks -->
+        <div class="absolute -top-6 right-7 w-8 h-8 pointer-events-none">
+          <svg class="w-full h-full overflow-visible" viewBox="0 0 30 30">
+            <path d="M 5,28 Q 12,12 25,5" fill="none" stroke="#D97706" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div id="fuse-spark" class="absolute -top-2 -right-1 w-6 h-6 flex items-center justify-center animate-spin" style="animation: sparkFlicker 0.15s infinite alternate;">
+            <span class="text-xl filter drop-shadow-[0_0_8px_#F59E0B]">✨</span>
+          </div>
+        </div>
+
+        <!-- Bomb Cap (Metallic Collar) -->
+        <div class="absolute -top-2 right-8 w-6 h-4 bg-gradient-to-t from-gray-700 to-gray-500 rounded-sm border border-gray-400 shadow-sm z-10"></div>
+
+        <!-- Round Bomb Sphere Body -->
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-gray-800 via-gray-950 to-black shadow-[0_15px_35px_rgba(0,0,0,0.8),inset_0_4px_8px_rgba(255,255,255,0.4)] border border-gray-700 relative flex items-center justify-center">
+          <div class="absolute top-3 left-4 w-7 h-4 rounded-full bg-white/40 blur-[1px] transform -rotate-45"></div>
+          <span class="text-2xl opacity-80 filter drop-shadow">⚡</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Screen Flash on Blast -->
+    <div id="blast-flash" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-150 z-60"></div>
+
+    </div>
+
+  <!-- ============================================================== -->
+  <!-- SCREEN: HOLLYWOOD MOVIE END CREDITS (PITCH BLACK & GLITTER)    -->
+  <!-- ============================================================== -->
+  <div id="screen-credits" class="fixed inset-0 z-50 bg-[#050508] text-white hidden flex-col items-center justify-between overflow-y-auto px-4 py-8 film-grain-overlay">
+    
+    <!-- Floating Glitter Canvas / Background Elements -->
+    <div id="glitter-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- Letterbox Top Bar -->
+    <div class="w-full text-center relative z-10 pt-2 pb-4 border-b border-amber-500/20">
+      <span class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-mono tracking-widest uppercase shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+        <span>🎬</span>
+        <span>OFFICIAL MOVIE POST-CREDITS SCENE</span>
+        <span>✨</span>
+      </span>
+    </div>
+
+    <!-- Main Scrolling Credits Container -->
+    <div class="w-full max-w-lg mx-auto py-8 relative z-10 flex flex-col items-center text-center space-y-7">
+      
+      <!-- Big Studio Production Card -->
+      <div class="space-y-1">
+        <p class="text-xs uppercase tracking-[0.35em] text-amber-200/70 font-mono">Presents</p>
+        <h1 class="font-outfit text-3xl sm:text-4xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-100 to-amber-400 gold-glow-title">
+          A YASH.P ORIGINAL
+        </h1>
+        <p class="text-xs tracking-widest uppercase text-rose-400 font-semibold font-mono mt-1">
+          ✦ THE BIRTHDAY MASTERPIECE ✦
+        </p>
+      </div>
+
+      <!-- Golden Movie Credits List -->
+      <div class="w-full rounded-2xl bg-white/[0.03] border border-amber-500/20 p-6 sm:p-8 backdrop-blur-md shadow-2xl space-y-5 text-center">
+        
+        <!-- Credit Item -->
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">Directing & Vision</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide">Yash.P</span>
+        </div>
+
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">Lead Coding & Architecture</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide">Yash.P</span>
+        </div>
+
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">Pyrotechnics, Bomb VFX & Explosions</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide">Yash.P 💣💥</span>
+        </div>
+
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">Scriptwriting & Sassy Dialogues</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide">Yash.P</span>
+        </div>
+
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">UI / UX Glassmorphic Styling</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide">Yash.P</span>
+        </div>
+
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">Audio Synthesis & Musical Chords</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide">Yash.P 🎵</span>
+        </div>
+
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">Production Operations & Support</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide">Team Yash.P 🤝</span>
+        </div>
+
+        <div class="flex flex-col items-center border-b border-white/5 pb-3">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400 font-mono mb-1">Official Project Rating</span>
+          <span class="font-outfit text-lg sm:text-xl font-extrabold text-amber-300 tracking-wide flex items-center gap-1.5">
+            <span>10 / 10 Masterpiece</span>
+            <span>⭐⭐⭐⭐⭐</span>
+          </span>
+        </div>
+
+        <div class="flex flex-col items-center pt-1">
+          <span class="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-rose-300/80 font-mono mb-1">Literally Everything Else Under The Sun</span>
+          <span class="font-outfit text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-pink-300 to-amber-300">
+            Yash.P 👑
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Dedication Card -->
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-pink-950/40 via-purple-950/40 to-amber-950/40 border border-pink-500/30 shadow-lg space-y-2">
+        <span class="text-xs font-mono uppercase tracking-widest text-pink-300">Special Lead Starring:</span>
+        <h2 class="font-outfit text-2xl font-black text-white">
+          Asmita (Chikkuuu) 👑💖
+        </h2>
+        <p class="font-handwriting text-xl text-pink-200 pt-1">
+          "The only one I have the absolute birthright to irritate, annoy & disturb forever!" 🤭
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="w-full flex flex-col gap-3 pt-3">
+        <!-- Next Button leading to Review Us Screen -->
+        <button id="btn-next-to-review" onclick="goToReviewScreen()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-rose-500 to-pink-500 text-white font-outfit font-black text-sm tracking-wider uppercase shadow-xl shadow-rose-500/30 border border-white/50 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center space-x-2 animate-bounce">
+          <span>NEXT: REVIEW THE SURPRISE</span>
+          <span class="text-base">⭐ ➔</span>
+        </button>
+
+        <div class="w-full flex flex-col sm:flex-row items-center gap-3">
+          <button onclick="restartExperienceFromCredits()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white font-outfit font-black text-sm tracking-wider uppercase shadow-lg shadow-amber-500/20 border border-white/30 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center space-x-2">
+          <span>🔁 Replay Full Experience</span>
+        </button>
+
+        <button onclick="closeCreditsBackToNote()" class="w-full py-3.5 px-6 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-outfit font-bold text-sm tracking-wide border border-white/20 active:scale-95 transition-all flex items-center justify-center space-x-2">
+          <span>💌 Back To Note</span>
+        </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Letterbox Bottom Bar -->
+    <div class="w-full text-center relative z-10 pt-4 pb-2 border-t border-amber-500/20 text-[11px] font-mono text-gray-500">
+      © 2026 Yash.P Productions • All Bestie Rights Reserved
+    </div>
+
+  </div>
+
+  
+  <!-- ============================================================== -->
+  <!-- SCREEN: REVIEW US & FEEDBACK WITH NOTE & STARS                  -->
+  <!-- ============================================================== -->
+  <div id="screen-review" class="fixed inset-0 z-50 bg-[#0A070D] text-white hidden flex-col items-center justify-between overflow-y-auto px-4 py-8 film-grain-overlay">
+    
+    <!-- Floating Glitter Canvas / Background Elements -->
+    <div id="review-glitter-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- Letterbox Top Bar -->
+    <div class="w-full text-center relative z-10 pt-2 pb-3 border-b border-rose-500/20">
+      <span class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-purple-500/10 border border-rose-400/30 text-rose-300 text-xs font-mono tracking-widest uppercase shadow-[0_0_15px_rgba(244,63,94,0.2)]">
+        <span>⭐</span>
+        <span>RATE & REVIEW THE SURPRISE</span>
+        <span>💖</span>
+      </span>
+    </div>
+
+    <!-- Main Review Card Container -->
+    <div class="w-full max-w-md mx-auto py-6 relative z-10 flex flex-col items-center text-center space-y-6">
+      
+      <!-- Header Titles -->
+      <div class="space-y-1">
+        <h2 class="font-outfit text-3xl sm:text-4xl font-black tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-rose-300 to-purple-300 gold-glow-title">
+          Review Us! ⭐
+        </h2>
+        <p class="text-xs text-gray-300 font-medium max-w-xs mx-auto leading-relaxed">
+          How was the surprise curated by <span class="text-amber-400 font-bold">Yash.P</span>? Drop your genuine rating & note.
+        </p>
+      </div>
+
+      <!-- Interactive Form Container -->
+      <div id="review-form-card" class="w-full rounded-3xl bg-white/[0.05] border border-rose-400/30 p-6 sm:p-7 backdrop-blur-xl shadow-2xl space-y-6 text-center relative overflow-hidden">
+        
+        <!-- Glowing Top Accent -->
+        <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-40 h-24 bg-gradient-to-b from-rose-500/30 to-transparent blur-2xl pointer-events-none"></div>
+
+        <!-- 5 Interactive Big Glowing Stars -->
+        <div class="space-y-2">
+          <label class="block text-xs font-mono uppercase tracking-widest text-amber-200">
+            Select Your Star Rating:
+          </label>
+          
+          <div class="flex justify-center items-center gap-2 sm:gap-3 py-1 select-none">
+            <button type="button" onclick="setReviewRating(1)" onmouseenter="previewStars(1)" onmouseleave="resetStarPreview()" class="star-btn text-3xl sm:text-4xl transform hover:scale-125 active:scale-95 transition-all filter drop-shadow cursor-pointer" data-star="1">★</button>
+            <button type="button" onclick="setReviewRating(2)" onmouseenter="previewStars(2)" onmouseleave="resetStarPreview()" class="star-btn text-3xl sm:text-4xl transform hover:scale-125 active:scale-95 transition-all filter drop-shadow cursor-pointer" data-star="2">★</button>
+            <button type="button" onclick="setReviewRating(3)" onmouseenter="previewStars(3)" onmouseleave="resetStarPreview()" class="star-btn text-3xl sm:text-4xl transform hover:scale-125 active:scale-95 transition-all filter drop-shadow cursor-pointer" data-star="3">★</button>
+            <button type="button" onclick="setReviewRating(4)" onmouseenter="previewStars(4)" onmouseleave="resetStarPreview()" class="star-btn text-3xl sm:text-4xl transform hover:scale-125 active:scale-95 transition-all filter drop-shadow cursor-pointer" data-star="4">★</button>
+            <button type="button" onclick="setReviewRating(5)" onmouseenter="previewStars(5)" onmouseleave="resetStarPreview()" class="star-btn text-3xl sm:text-4xl transform hover:scale-125 active:scale-95 transition-all filter drop-shadow cursor-pointer" data-star="5">★</button>
+          </div>
+
+          <!-- Dynamic Rating Verdict Text -->
+          <div id="rating-verdict" class="text-xs font-bold text-amber-300 min-h-[20px] tracking-wide transition-all">
+            5/5: 100/10 ABSOLUTE MASTERPIECE! 👑🎉
+          </div>
+        </div>
+
+        <!-- Note / Remark Input Box -->
+        <div class="space-y-2 text-left">
+          <label for="review-remark-input" class="block text-xs font-mono uppercase tracking-wider text-rose-300 flex items-center justify-between">
+            <span>Your Remark / Note For Yash:</span>
+            <span class="text-[10px] text-gray-400 lowercase">✍️ honest words only</span>
+          </label>
+          <div class="relative">
+            <textarea id="review-remark-input" rows="4" maxlength="500" placeholder="Write your remark, review or message for Yash here... 💭💖" class="w-full rounded-2xl bg-black/40 border border-white/15 focus:border-amber-400 p-4 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400/30 transition-all resize-none shadow-inner"></textarea>
+          </div>
+        </div>
+
+        <!-- Locked Next Section with Unlock Button -->
+        <div class="my-4 p-4 rounded-3xl bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-rose-500/10 border border-amber-400/35 flex flex-col items-center gap-3 text-center shadow-lg">
+          <div class="flex items-center justify-center gap-2 text-sm sm:text-base font-medium text-amber-200">
+            <span class="text-base sm:text-lg">🔒</span>
+            <span>Note: Next section of this website is locked by the author (Yash.P).</span>
+          </div>
+          <!-- The Secret Unlock Button -->
+          <button type="button" onclick="triggerSecretUnlock()" class="py-2.5 px-6 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-purple-600 text-white font-outfit font-black text-xs sm:text-sm tracking-wider uppercase shadow-md shadow-amber-400/20 border border-white/40 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 animate-pulse cursor-pointer">
+            <span>🔓 UNLOCK SECRET SECTION</span>
+            <span>➔</span>
+          </button>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="btn-submit-review" onclick="submitReview()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-rose-500 to-purple-600 text-white font-outfit font-black text-sm tracking-wider uppercase shadow-xl shadow-rose-500/25 border border-white/30 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center space-x-2">
+          <span>Submit Review To Yash</span>
+          <span class="text-base">💌 ✨</span>
+        </button>
+
+      </div>
+
+      <!-- Submitted Success / Recorded Card (Displays Saved Remark Permanently) -->
+      <div id="review-success-card" class="w-full rounded-3xl bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-emerald-400/40 p-6 sm:p-7 backdrop-blur-xl shadow-2xl space-y-4 text-center hidden">
+        
+        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-2xl animate-bounce">
+          ✅
+        </div>
+
+        <h3 class="font-outfit text-2xl font-black text-emerald-300">
+          Remark Recorded Forever! 💖
+        </h3>
+
+        <!-- Permanent Review Display Box For Yash To See -->
+        <div class="p-4 rounded-2xl bg-black/50 border border-white/10 text-left space-y-2">
+          <div class="flex items-center justify-between border-b border-white/10 pb-2">
+            <span class="text-[11px] font-mono uppercase text-gray-400">Rating Given:</span>
+            <span id="saved-stars-display" class="text-amber-400 font-bold text-base tracking-widest">★★★★★</span>
+          </div>
+          <div class="pt-1">
+            <span class="text-[11px] font-mono uppercase text-gray-400 block mb-1">Her Note:</span>
+            <p id="saved-remark-display" class="font-handwriting text-xl text-pink-200 leading-snug whitespace-pre-line"></p>
+          </div>
+        </div>
+
+        <!-- Locked Next Section with Unlock Button -->
+        <div class="my-4 p-4 rounded-3xl bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-rose-500/10 border border-amber-400/35 flex flex-col items-center gap-3 text-center shadow-lg">
+          <div class="flex items-center justify-center gap-2 text-sm sm:text-base font-medium text-amber-200">
+            <span class="text-base sm:text-lg">🔒</span>
+            <span>Note: Next section of this website is locked by the author (Yash.P).</span>
+          </div>
+          <!-- The Secret Unlock Button -->
+          <button type="button" onclick="triggerSecretUnlock()" class="py-2.5 px-6 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-purple-600 text-white font-outfit font-black text-xs sm:text-sm tracking-wider uppercase shadow-md shadow-amber-400/20 border border-white/40 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 animate-pulse cursor-pointer">
+            <span>🔓 UNLOCK SECRET SECTION</span>
+            <span>➔</span>
+          </button>
+        </div>
+
+        <!-- Direct Share Button to WhatsApp Yash -->
+        <button id="btn-whatsapp-share" onclick="shareReviewOnWhatsApp()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-outfit font-black text-sm tracking-wide shadow-lg shadow-emerald-500/25 border border-white/30 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center space-x-2">
+          <span>📲 Send Remark Directly To Yash</span>
+        </button>
+
+        <!-- Options to Edit or Reset/Delete Review -->
+        <div class="flex items-center justify-center gap-4 pt-2">
+          <button onclick="editReview()" class="text-xs text-amber-300 hover:text-white underline font-mono flex items-center space-x-1">
+            <span>✏️ Edit Remark</span>
+          </button>
+          
+          <span class="text-gray-500">•</span>
+
+          <button onclick="deleteReview()" class="text-xs text-rose-400 hover:text-rose-200 underline font-mono flex items-center space-x-1">
+            <span>🗑️ Delete / Reset Review</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation & Action Buttons -->
+      <div class="w-full flex items-center justify-between gap-3 pt-2">
+        <button onclick="closeReviewBackToCredits()" class="py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-outfit font-bold text-xs border border-white/20 active:scale-95 transition-all flex items-center space-x-1.5">
+          <span>🎬 Movie Credits</span>
+        </button>
+
+        <button onclick="restartExperienceFromReview()" class="py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 text-white font-outfit font-bold text-xs border border-white/30 active:scale-95 transition-all flex items-center space-x-1.5">
+          <span>🔁 Replay All</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Letterbox Bottom Bar -->
+    <div class="w-full text-center relative z-10 pt-4 pb-2 border-t border-rose-500/20 text-[11px] font-mono text-gray-500">
+      Made with endless love & nuisance • Yash.P & Chikkuuu 👑
+    </div>
+
+  </div>
+
+  
+  <!-- ============================================================== -->
+  <!-- SCREEN: THE ULTIMATE RACE (SPERM RACE MEME TO THE FINISH LINE) -->
+  <!-- ============================================================== -->
+  <div id="screen-race" class="fixed inset-0 z-50 bg-[#06040A] text-white hidden flex-col items-center justify-between overflow-hidden px-3 py-6 film-grain-overlay">
+    
+    <!-- Top Bar -->
+    <div class="w-full text-center relative z-10 pt-2 pb-2">
+      <span class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-mono tracking-widest uppercase">
+        <span>🏁</span>
+        <span>THE GREATEST RACE IN HISTORY</span>
+        <span>⚡</span>
+      </span>
+      <h2 class="font-outfit text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-rose-300 to-yellow-200 mt-2 tracking-tight">
+        The Race of Life! 🧬
+      </h2>
+      <p class="text-[11px] sm:text-xs text-gray-400 font-mono mt-0.5">
+        Out of 300,000,000 contenders... Who takes the gold? 🥇
+      </p>
+    </div>
+
+    <!-- Race Track Canvas Container -->
+    <div class="w-full max-w-lg mx-auto relative flex-1 flex flex-col items-center justify-center my-2">
+      <canvas id="race-canvas" class="w-full h-72 sm:h-80 rounded-3xl border border-white/10 bg-radial from-purple-950/40 via-black to-[#050308] shadow-2xl"></canvas>
+      
+      <!-- Big Winner Announcement Overlay (Pops on finish) -->
+      <div id="winner-banner" class="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/75 backdrop-blur-md rounded-3xl opacity-0 pointer-events-none transition-all duration-700 text-center scale-90">
+        <div class="text-5xl sm:text-6xl animate-bounce mb-2">👑🏆🎉</div>
+        <h3 class="font-outfit text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-100 to-amber-400 gold-glow-title mb-2">
+          CONGRATULATIONS!
+        </h3>
+        <h4 class="font-outfit text-xl sm:text-2xl font-extrabold text-white mb-2">
+          YOU WON THE RACE! 🥇
+        </h4>
+        <p class="text-xs sm:text-sm text-pink-200 font-medium max-w-xs mx-auto leading-relaxed">
+          Out of 300 Million contenders, <span class="text-amber-300 font-bold">YOU</span> crossed the finish line first to be born into this world! 🙌✨
+        </p>
+        <!-- Next Button on Winner Banner (No Auto Cut) -->
+        <button id="btn-race-next" onclick="goToSurvivalScreen()" class="mt-4 py-3.5 px-7 rounded-2xl bg-gradient-to-r from-amber-400 via-rose-500 to-purple-600 text-white font-outfit font-black text-sm tracking-wider uppercase shadow-xl shadow-amber-400/30 border border-white/40 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 animate-bounce cursor-pointer">
+          <span>NEXT: SURVIVAL RECORD ⏳</span>
+          <span>➔</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Manual Skip Button if user wants to proceed immediately -->
+    <div class="w-full text-center relative z-10 pb-2">
+      <button onclick="goToSurvivalScreen()" class="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-gray-300 border border-white/20 active:scale-95 transition-all">
+        Skip To Next ➔
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- SCREEN: CONGRATULATIONS ON SURVIVING (BORN 6 OCT 2009)          -->
+  <!-- ============================================================== -->
+  <div id="screen-survival" class="fixed inset-0 z-50 bg-[#08050D] text-white hidden flex-col items-center justify-between overflow-y-auto px-4 py-8 film-grain-overlay">
+    
+    <!-- Top Bar -->
+    <div class="w-full text-center relative z-10 pt-2 pb-3 border-b border-amber-500/20">
+      <span class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-mono tracking-widest uppercase">
+        <span>🌍</span>
+        <span>EARTH SURVIVAL RECORD</span>
+        <span>⏳</span>
+      </span>
+    </div>
+
+    <!-- Main Survival Dashboard -->
+    <div class="w-full max-w-md mx-auto py-6 relative z-10 flex flex-col items-center text-center space-y-6">
+      
+      <div class="space-y-1">
+        <h2 class="font-outfit text-3xl sm:text-4xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-rose-300 to-yellow-200 gold-glow-title">
+          Surviving Record! 🎂
+        </h2>
+        <p class="text-xs text-gray-300 font-mono">
+          Born: <span class="text-amber-300 font-bold">6 October 2009</span> • Still going strong! 💪
+        </p>
+      </div>
+
+      <!-- Live Active Real-Time Counter Grid -->
+      <div class="w-full grid grid-cols-2 gap-3.5">
+        
+        <!-- Days -->
+        <div class="counter-digit-card flex flex-col items-center">
+          <span id="counter-days" class="font-outfit text-3xl sm:text-4xl font-black text-amber-300 tracking-tight">--</span>
+          <span class="text-[11px] uppercase font-mono tracking-wider text-gray-400 mt-1">Days Survived</span>
+        </div>
+
+        <!-- Hours -->
+        <div class="counter-digit-card flex flex-col items-center">
+          <span id="counter-hours" class="font-outfit text-3xl sm:text-4xl font-black text-rose-300 tracking-tight">--</span>
+          <span class="text-[11px] uppercase font-mono tracking-wider text-gray-400 mt-1">Total Hours</span>
+        </div>
+
+        <!-- Minutes -->
+        <div class="counter-digit-card flex flex-col items-center">
+          <span id="counter-minutes" class="font-outfit text-2xl sm:text-3xl font-black text-purple-300 tracking-tight">--</span>
+          <span class="text-[11px] uppercase font-mono tracking-wider text-gray-400 mt-1">Total Minutes</span>
+        </div>
+
+        <!-- Live Ticking Seconds -->
+        <div class="counter-digit-card flex flex-col items-center border-amber-400/60 shadow-[0_0_20px_rgba(245,158,11,0.25)]">
+          <span id="counter-seconds" class="font-outfit text-2xl sm:text-3xl font-black text-emerald-300 tracking-tight">--</span>
+          <span class="text-[11px] uppercase font-mono tracking-wider text-emerald-400/90 mt-1 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Live Seconds</span>
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Fun Badge -->
+      <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center space-y-1">
+        <p class="text-xs sm:text-sm text-gray-200 font-medium">
+          That is over <span id="counter-days-approx" class="text-amber-300 font-bold">6,200+ days</span> of blessing Earth with your chaotic energy (and tolerating me)! 🤭
+        </p>
+      </div>
+
+      <!-- Next Button to Buddhapa Screen -->
+      <button onclick="goToBuddhapaScreen()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-400 via-rose-500 to-purple-600 text-white font-outfit font-black text-sm tracking-wider uppercase shadow-xl shadow-rose-500/25 border border-white/40 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center space-x-2">
+        <span>NEXT: THE REALITY CHECK 👵</span>
+        <span class="text-base">➔</span>
+      </button>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="w-full text-center relative z-10 pt-3 pb-2 border-t border-amber-500/20 text-[11px] font-mono text-gray-500">
+      Official Survival Statistics • Authenticated by Me with Love ❤️
+    </div>
+
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- SCREEN: CLOSER TO BUDDHAPA (OLD AGE COMEDY ANIMATION)           -->
+  <!-- ============================================================== -->
+  <div id="screen-buddhapa" class="fixed inset-0 z-50 bg-[#0B0609] text-white hidden flex-col items-center justify-between overflow-y-auto px-4 py-8 film-grain-overlay">
+    
+    <!-- Top Bar -->
+    <div class="w-full text-center relative z-10 pt-2 pb-3 border-b border-rose-500/20">
+      <span class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-rose-500/10 border border-rose-400/30 text-rose-300 text-xs font-mono tracking-widest uppercase">
+        <span>👵</span>
+        <span>AGING REALITY PROTOCOL</span>
+        <span>🦯</span>
+      </span>
+    </div>
+
+    <!-- Main Animation Stage -->
+    <div class="w-full max-w-md mx-auto py-6 relative z-10 flex flex-col items-center text-center space-y-6">
+      
+      <div class="space-y-1">
+        <h2 class="font-outfit text-2xl sm:text-3xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-amber-300 to-pink-300 gold-glow-title">
+          Congrats! You're Closer To Buddhapa! 👵😂
+        </h2>
+        <p class="text-xs text-gray-300 font-mono">
+          One more year completed... Old age has officially entered the chat!
+        </p>
+      </div>
+
+      <!-- Animated Stage: Girl takes a step toward her older form -->
+      <div class="w-full rounded-3xl bg-white/[0.04] border border-rose-400/20 p-6 backdrop-blur-md shadow-2xl relative overflow-hidden flex flex-col items-center space-y-4">
+        
+        <!-- Animated Visual Comparison / Step Evolution -->
+        <div class="w-full flex items-center justify-around py-4 relative">
+          
+          <!-- State 1: Cute Girl with crown -->
+          <div class="flex flex-col items-center space-y-2 opacity-65 transform scale-90">
+            <div class="text-5xl sm:text-6xl">💃✨</div>
+            <span class="text-[11px] font-mono uppercase text-gray-400">Sweet 16 Era</span>
+          </div>
+
+          <!-- The Dramatic Step Forward Arrow -->
+          <div class="flex flex-col items-center justify-center animate-pulse text-amber-400">
+            <span class="text-2xl font-bold font-mono">+1 Step</span>
+            <span class="text-3xl">➔</span>
+          </div>
+
+          <!-- State 2: Older Form with Spectacles & Walking Stick (Animated) -->
+          <div class="flex flex-col items-center space-y-2 relative granny-figure">
+            <div class="relative text-5xl sm:text-6xl">
+              <span>👵</span>
+              <span class="absolute -right-2 bottom-0 text-3xl granny-cane">🦯</span>
+              <span class="absolute -top-1 left-2 text-xl">👓</span>
+            </div>
+            <span class="text-[11px] font-mono uppercase text-rose-300 font-bold">Buddhapa Mode ⏳</span>
+          </div>
+
+        </div>
+
+        <!-- Funny Dialogue Speech Bubble -->
+        <div class="w-full p-4 rounded-2xl bg-black/60 border border-white/10 text-center space-y-2 shadow-inner">
+          <p class="font-handwriting text-xl sm:text-2xl text-pink-200 leading-snug">
+            “Mere gutne aur kamar dukhne lag gaye...” 👵☕
+          </p>
+        </div>
+
+        <!-- Funny Bullet Points -->
+        <div class="w-full text-left space-y-1.5 text-xs text-gray-300 font-medium pt-1">
+          <div class="flex items-center gap-2">
+            <span>✅</span> <span>Official joint creaks & knee pain era loading...</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span>✅</span> <span>Time to complain about loud music & sleep by 9 PM.</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span>✅</span> <span>Don't worry, you'll still be my favorite budhiya bestie! 💖</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Next Button to Farewell Screen -->
+      <button onclick="goToClosingScreen()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-rose-500 via-purple-600 to-amber-500 text-white font-outfit font-black text-sm tracking-wider uppercase shadow-xl shadow-rose-500/25 border border-white/40 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center space-x-2">
+        <span>FINAL FAREWELL 🎬</span>
+        <span class="text-base">➔</span>
+      </button>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="w-full text-center relative z-10 pt-3 pb-2 border-t border-rose-500/20 text-[11px] font-mono text-gray-500">
+      Aging Simulator 3000 • Official Edition
+    </div>
+
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- SCREEN: FAREWELL & AUTO-CLOSE                                  -->
+  <!-- ============================================================== -->
+  <div id="screen-closing" class="fixed inset-0 z-50 bg-[#040206] text-white hidden flex-col items-center justify-between overflow-y-auto px-4 py-8 film-grain-overlay">
+    
+    <div class="w-full text-center relative z-10 pt-2 pb-3 border-b border-white/10">
+      <span class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-mono tracking-widest uppercase">
+        <span>🎬</span>
+        <span>THE GRAND FINALE</span>
+        <span>✨</span>
+      </span>
+    </div>
+
+    <!-- Farewell Center Card -->
+    <div class="w-full max-w-md mx-auto py-8 relative z-10 flex flex-col items-center text-center space-y-6">
+      
+      <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center text-3xl shadow-xl shadow-rose-500/30">
+        💖
+      </div>
+
+      <div class="space-y-2">
+        <h1 class="font-outfit text-3xl sm:text-4xl font-black uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-rose-300 to-yellow-200 gold-glow-title">
+          THANK YOU FOR WATCHING!
+        </h1>
+        <p class="font-outfit text-lg sm:text-xl font-bold text-amber-200 tracking-wide">
+          Directed & Presented by Yash.P 👑
+        </p>
+        <p class="text-xs text-gray-300 max-w-xs mx-auto leading-relaxed pt-2">
+          Hope this little interactive surprise made your special day 1000x happier, Chikkuuu! Have the most wonderful year ahead! 🎂🎉✨
+        </p>
+      </div>
+
+      <!-- Self-destruct / Auto-close Box -->
+      <div class="w-full p-5 rounded-3xl bg-white/[0.05] border border-white/15 backdrop-blur-md shadow-2xl space-y-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-amber-300 flex items-center justify-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+          <span>Tab Auto-Close Countdown</span>
+        </span>
+        
+        <div id="close-timer-digit" class="font-outfit text-5xl font-black text-rose-400">
+          10
+        </div>
+
+        <p class="text-[11px] text-gray-400 font-mono">
+          Closing website automatically in a few seconds...
+        </p>
+
+        <!-- Manual Close Tab Button if browser popup policy blocks script close -->
+        <button onclick="executeTabClose()" class="w-full py-3 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono text-xs font-bold border border-white/20 active:scale-95 transition-all">
+          Close Website Now 👋
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Final Blackout Curtain -->
+    <div id="final-blackout" class="fixed inset-0 bg-black z-60 hidden flex-col items-center justify-center text-center p-6 text-white space-y-4">
+      <div class="text-5xl">👋💖✨</div>
+      <h2 class="font-outfit text-2xl font-bold text-gray-200">THE END</h2>
+      <p class="text-xs text-gray-400 font-mono">You may now close this tab. Happy Birthday Asmita!</p>
+    </div>
+
+    <div class="w-full text-center relative z-10 pt-3 pb-2 border-t border-white/10 text-[11px] font-mono text-gray-500">
+      Forever & Always Best Friends • Yash.P
+    </div>
+
+  </div>
+
+  </main>
+
+  <!-- ============================================== -->
+  <!-- HIGH PERFORMANCE JAVASCRIPT ENGINE             -->
+  <!-- ============================================== -->
+  <script>
+    /* -------------------------------------------------------------
+       STATE MANAGEMENT & CONFIG
+    ------------------------------------------------------------- */
+    const CORRECT_PIN = "0610";
+    let enteredPIN = "";
+    let currentScreen = 1;
+    let blownCandles = [false, false, false, false, false];
+    let isTransitioning = false;
+    let stageStep = 1;
+
+    /* -------------------------------------------------------------
+       SOFT & CHARMING BGM SYNTHESIZER (WEB AUDIO API)
+       Delicate music box / acoustic lullaby melody over warm chords
+    ------------------------------------------------------------- */
+    class SoftCharmingBgmAudio {
+      constructor() {
+        this.ctx = null;
+        this.isPlaying = false;
+        this.timer = null;
+        this.step = 0;
+
+        this.melodySequence = [
+          { f: 587.33, d: 0.6 }, // D5
+          { f: 739.99, d: 0.6 }, // F#5
+          { f: 880.00, d: 0.9 }, // A5
+          { f: 987.77, d: 0.5 }, // B5
+          { f: 1174.66, d: 1.1 }, // D6
+          { f: 880.00, d: 0.6 }, // A5
+          { f: 739.99, d: 0.6 }, // F#5
+          { f: 659.25, d: 0.7 }, // E5
+          { f: 587.33, d: 1.4 }, // D5
+          
+          { f: 659.25, d: 0.6 }, // E5
+          { f: 739.99, d: 0.6 }, // F#5
+          { f: 880.00, d: 0.9 }, // A5
+          { f: 1046.50, d: 0.5 }, // C6
+          { f: 987.77, d: 1.2 }, // B5
+          { f: 880.00, d: 0.6 }, // A5
+          { f: 659.25, d: 0.7 }, // E5
+          { f: 587.33, d: 1.5 }  // D5
+        ];
+
+        this.chords = [
+          [146.83, 220.00, 293.66], // D major
+          [196.00, 246.94, 293.66], // G major
+          [220.00, 277.18, 329.63], // A major
+          [164.81, 220.00, 261.63]  // Bm / F#m
+        ];
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playBell(freq, time, duration = 1.2, volume = 0.075) {
+        if (!this.ctx) return;
+        
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, time);
+
+        gain.gain.setValueAtTime(0.0001, time);
+        gain.gain.exponentialRampToValueAtTime(volume, time + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(time);
+        osc.stop(time + duration);
+
+        const subOsc = this.ctx.createOscillator();
+        const subGain = this.ctx.createGain();
+        subOsc.type = 'sine';
+        subOsc.frequency.setValueAtTime(freq * 0.5, time);
+        subGain.gain.setValueAtTime(0.0001, time);
+        subGain.gain.exponentialRampToValueAtTime(volume * 0.35, time + 0.03);
+        subGain.gain.exponentialRampToValueAtTime(0.0001, time + duration * 0.8);
+        subOsc.connect(subGain);
+        subGain.connect(this.ctx.destination);
+        subOsc.start(time);
+        subOsc.stop(time + duration * 0.8);
+      }
+
+      playNextNote() {
+        if (!this.isPlaying || !this.ctx) return;
+        const now = this.ctx.currentTime;
+        const note = this.melodySequence[this.step % this.melodySequence.length];
+
+        this.playBell(note.f, now, note.d * 1.8, 0.08);
+
+        if (this.step % 4 === 0) {
+          const chordIndex = Math.floor(this.step / 4) % this.chords.length;
+          const chord = this.chords[chordIndex];
+          chord.forEach((f, idx) => {
+            this.playBell(f, now + idx * 0.08, 2.5, 0.04);
+          });
+        }
+
+        const nextDelay = note.d * 720;
+        this.step++;
+        this.timer = setTimeout(() => this.playNextNote(), nextDelay);
+      }
+
+      start() {
+        this.init();
+        if (this.isPlaying) return;
+        this.isPlaying = true;
+        this.playNextNote();
+        updateBgmButtonUI(true);
+      }
+
+      stop() {
+        this.isPlaying = false;
+        if (this.timer) clearTimeout(this.timer);
+        updateBgmButtonUI(false);
+      }
+
+      toggle() {
+        if (this.isPlaying) {
+          this.stop();
+        } else {
+          this.start();
+        }
+      }
+    }
+
+    const bgmPlayer = new SoftCharmingBgmAudio();
+
+    function toggleBGM() {
+      bgmPlayer.toggle();
+    }
+
+    function updateBgmButtonUI(isPlaying) {
+      const icon = document.getElementById('bgm-icon');
+      const label = document.getElementById('bgm-label');
+      const btn = document.getElementById('bgm-toggle-btn');
+      if (isPlaying) {
+        icon.textContent = '🔊';
+        label.textContent = 'Soft BGM Playing';
+        btn.classList.add('border-emerald-400', 'bg-emerald-50');
+      } else {
+        icon.textContent = '🔇';
+        label.textContent = 'Soft BGM Muted';
+        btn.classList.remove('border-emerald-400', 'bg-emerald-50');
+      }
+    }
+
+    /* -------------------------------------------------------------
+       CANVAS PARTICLE ENGINE
+    ------------------------------------------------------------- */
+    const canvas = document.getElementById('main-canvas');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let dpr = window.devicePixelRatio || 1;
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const dustMotes = [];
+    const touchStars = [];
+    const confettiPieces = [];
+    const floatingHearts = [];
+    const balloons = [];
+    const smokePuffs = [];
+    const fireworksRockets = [];
+    const fireworksSparks = [];
+
+    const DUST_COUNT = Math.min(130, Math.floor(width / 3.2));
+    for (let i = 0; i < DUST_COUNT; i++) {
+      dustMotes.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2.2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35 - 0.25,
+        alpha: Math.random() * 0.6 + 0.2,
+        twinkleSpeed: Math.random() * 0.02 + 0.008,
+        color: ['#FDE68A', '#FBCFE8', '#DDD6FE', '#BAE6FD', '#FED7AA'][Math.floor(Math.random() * 5)]
+      });
+    }
+
+    function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius, color, alpha) {
+      let rot = (Math.PI / 2) * 3;
+      let x = cx;
+      let y = cy;
+      let step = Math.PI / spikes;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - outerRadius);
+      for (let i = 0; i < spikes; i++) {
+        x = cx + Math.cos(rot) * outerRadius;
+        y = cy + Math.sin(rot) * outerRadius;
+        ctx.lineTo(x, y);
+        rot += step;
+
+        x = cx + Math.cos(rot) * innerRadius;
+        y = cy + Math.sin(rot) * innerRadius;
+        ctx.lineTo(x, y);
+        rot += step;
+      }
+      ctx.lineTo(cx, cy - outerRadius);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.globalAlpha = Math.max(0, alpha);
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawHeart(ctx, x, y, size, color, alpha, rotation = 0) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotation);
+      ctx.scale(size / 15, size / 15);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(-10, -10, -20, 5, 0, 20);
+      ctx.bezierCurveTo(20, 5, 10, -10, 0, 0);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = Math.max(0, alpha);
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawBalloon(ctx, b) {
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(Math.sin(b.sway) * 0.12);
+
+      ctx.beginPath();
+      ctx.ellipse(0, 0, b.radiusX, b.radiusY, 0, 0, Math.PI * 2);
+      ctx.fillStyle = b.color;
+      ctx.globalAlpha = b.alpha;
+      ctx.shadowColor = b.color;
+      ctx.shadowBlur = 12;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.ellipse(-b.radiusX * 0.35, -b.radiusY * 0.35, b.radiusX * 0.25, b.radiusY * 0.35, -0.4, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(-3, b.radiusY);
+      ctx.lineTo(3, b.radiusY);
+      ctx.lineTo(0, b.radiusY + 4);
+      ctx.closePath();
+      ctx.fillStyle = b.color;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(0, b.radiusY + 4);
+      ctx.bezierCurveTo(Math.sin(b.sway) * 8, b.radiusY + 20, -Math.sin(b.sway) * 8, b.radiusY + 40, 0, b.radiusY + 55);
+      ctx.strokeStyle = 'rgba(120, 120, 130, 0.45)';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.restore();
+    }
+
+    function addTouchParticles(x, y) {
+      for (let i = 0; i < 3; i++) {
+        touchStars.push({
+          x: x + (Math.random() - 0.5) * 14,
+          y: y + (Math.random() - 0.5) * 14,
+          vx: (Math.random() - 0.5) * 2.2,
+          vy: (Math.random() - 0.5) * 2.2 - 0.6,
+          size: Math.random() * 5 + 3,
+          alpha: 1,
+          decay: Math.random() * 0.03 + 0.02,
+          rotation: Math.random() * Math.PI,
+          color: ['#F59E0B', '#FBBF24', '#F43F5E', '#EC4899', '#A855F7', '#FFE082'][Math.floor(Math.random() * 6)]
+        });
+      }
+    }
+
+    window.addEventListener('pointermove', (e) => {
+      addTouchParticles(e.clientX, e.clientY);
+    }, { passive: true });
+
+    window.addEventListener('pointerdown', (e) => {
+      addTouchParticles(e.clientX, e.clientY);
+    }, { passive: true });
+
+    function launchConfettiExplosion() {
+      const colors = ['#F43F5E', '#EC4899', '#8B5CF6', '#3B82F6', '#10B981', '#F59E0B', '#DE9989', '#FFD166'];
+      const count = 190;
+      const originX = width / 2;
+      const originY = height * 0.45;
+
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 14 + 6;
+        confettiPieces.push({
+          x: originX,
+          y: originY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 5.5,
+          w: Math.random() * 10 + 6,
+          h: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 14,
+          flip: Math.random() * Math.PI,
+          flipSpeed: Math.random() * 0.15 + 0.05,
+          alpha: 1,
+          gravity: 0.28,
+          drag: 0.985
+        });
+      }
+    }
+
+    function launchBalloons() {
+      const colors = ['#F87171', '#FB923C', '#FBBF24', '#34D399', '#60A5FA', '#A78BFA', '#F472B6'];
+      for (let i = 0; i < 35; i++) {
+        setTimeout(() => {
+          balloons.push({
+            x: Math.random() * (width * 0.9) + width * 0.05,
+            y: height + 60,
+            radiusX: Math.random() * 6 + 18,
+            radiusY: Math.random() * 8 + 24,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vy: -(Math.random() * 2.5 + 2.0),
+            sway: Math.random() * Math.PI * 2,
+            swaySpeed: Math.random() * 0.03 + 0.015,
+            alpha: 0.92
+          });
+        }, i * 140);
+      }
+    }
+
+    function launchHeartsFountain() {
+      const colors = ['#F43F5E', '#FB7185', '#FDA4AF', '#EC4899', '#D946EF', '#C084FC', '#FBBF24'];
+      const totalHearts = 70;
+
+      for (let i = 0; i < totalHearts; i++) {
+        setTimeout(() => {
+          floatingHearts.push({
+            x: width * 0.5 + (Math.random() - 0.5) * (width * 0.75),
+            y: height + 20,
+            vx: (Math.random() - 0.5) * 3,
+            vy: -(Math.random() * 7 + 6.5),
+            size: Math.random() * 18 + 12,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            alpha: 1,
+            rotation: (Math.random() - 0.5) * 0.4,
+            rotationSpeed: (Math.random() - 0.5) * 0.05,
+            sway: Math.random() * Math.PI * 2,
+            swaySpeed: Math.random() * 0.04 + 0.02
+          });
+        }, i * 32);
+      }
+    }
+
+    function addCandleExtinguishEffects(svgX, svgY) {
+      const cakeSvg = document.querySelector('svg');
+      if (!cakeSvg) return;
+      const rect = cakeSvg.getBoundingClientRect();
+      const realX = rect.left + (svgX / 300) * rect.width;
+      const realY = rect.top + (svgY / 300) * rect.height;
+
+      for (let i = 0; i < 26; i++) {
+        smokePuffs.push({
+          x: realX + (Math.random() - 0.5) * 8,
+          y: realY,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: -(Math.random() * 2 + 1),
+          radius: Math.random() * 4 + 3,
+          maxRadius: Math.random() * 16 + 12,
+          alpha: 0.75,
+          decay: Math.random() * 0.015 + 0.01,
+          color: 'rgba(230, 230, 235,'
+        });
+      }
+
+      for (let j = 0; j < 18; j++) {
+        const angle = Math.random() * Math.PI * 2;
+        const spd = Math.random() * 3 + 1;
+        touchStars.push({
+          x: realX,
+          y: realY,
+          vx: Math.cos(angle) * spd,
+          vy: Math.sin(angle) * spd - 1,
+          size: Math.random() * 4 + 2,
+          alpha: 1,
+          decay: Math.random() * 0.04 + 0.025,
+          rotation: Math.random() * Math.PI,
+          color: '#FBBF24'
+        });
+      }
+    }
+
+    let fireworksActive = false;
+    let fireworksInterval = null;
+
+    function launchSingleFirework() {
+      const startX = width * 0.15 + Math.random() * (width * 0.7);
+      const targetX = startX + (Math.random() - 0.5) * 120;
+      const targetY = height * 0.15 + Math.random() * (height * 0.35);
+      const speed = Math.random() * 3 + 11;
+      const colors = ['#F43F5E', '#EC4899', '#8B5CF6', '#3B82F6', '#10B981', '#F59E0B', '#FFD166', '#06B6D4'];
+      const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+
+      fireworksRockets.push({
+        x: startX,
+        y: height,
+        targetX: targetX,
+        targetY: targetY,
+        vx: (targetX - startX) / (height / speed),
+        vy: -speed,
+        color: chosenColor
+      });
+    }
+
+    function explodeFirework(x, y, color) {
+      const sparkCount = Math.floor(Math.random() * 35 + 55);
+      for (let i = 0; i < sparkCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 7 + 2;
+        fireworksSparks.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          color: color,
+          alpha: 1,
+          decay: Math.random() * 0.02 + 0.012,
+          gravity: 0.14,
+          drag: 0.965,
+          flicker: Math.random() > 0.4
+        });
+      }
+    }
+
+    function startFireworksShow() {
+      fireworksActive = true;
+      for (let i = 0; i < 4; i++) {
+        setTimeout(launchSingleFirework, i * 220);
+      }
+      fireworksInterval = setInterval(() => {
+        if (!fireworksActive) return;
+        launchSingleFirework();
+        if (Math.random() > 0.45) {
+          setTimeout(launchSingleFirework, 180);
+        }
+      }, 700);
+    }
+
+    function stopFireworksShow() {
+      fireworksActive = false;
+      if (fireworksInterval) clearInterval(fireworksInterval);
+    }
+
+    function render() {
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. Wallpaper Dust Motes
+      for (let i = 0; i < dustMotes.length; i++) {
+        const m = dustMotes[i];
+        m.x += m.vx;
+        m.y += m.vy;
+        m.alpha += Math.sin(Date.now() * m.twinkleSpeed) * 0.015;
+
+        if (m.x < -10) m.x = width + 10;
+        if (m.x > width + 10) m.x = -10;
+        if (m.y < -10) m.y = height + 10;
+        if (m.y > height + 10) m.y = -10;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, m.radius, 0, Math.PI * 2);
+        ctx.fillStyle = m.color;
+        ctx.globalAlpha = Math.min(0.85, Math.max(0.15, m.alpha));
+        ctx.shadowColor = m.color;
+        ctx.shadowBlur = 6;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // 2. Balloons
+      for (let i = balloons.length - 1; i >= 0; i--) {
+        const b = balloons[i];
+        b.y += b.vy;
+        b.sway += b.swaySpeed;
+        b.x += Math.sin(b.sway) * 0.8;
+
+        if (b.y < -120) {
+          balloons.splice(i, 1);
+          continue;
+        }
+
+        drawBalloon(ctx, b);
+      }
+
+      // 3. Touch / Cursor Stars
+      for (let i = touchStars.length - 1; i >= 0; i--) {
+        const s = touchStars[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.alpha -= s.decay;
+        s.rotation += 0.08;
+        s.size *= 0.97;
+
+        if (s.alpha <= 0 || s.size <= 0.5) {
+          touchStars.splice(i, 1);
+          continue;
+        }
+
+        drawStar(ctx, s.x, s.y, 4, s.size, s.size * 0.42, s.color, s.alpha);
+      }
+
+      // 4. Confetti
+      for (let i = confettiPieces.length - 1; i >= 0; i--) {
+        const p = confettiPieces[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.vx *= p.drag;
+        p.rotation += p.rotationSpeed;
+        p.flip += p.flipSpeed;
+
+        if (p.y > height + 40) {
+          confettiPieces.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.scale(Math.cos(p.flip), 1);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      }
+
+      // 5. Floating Hearts
+      for (let i = floatingHearts.length - 1; i >= 0; i--) {
+        const h = floatingHearts[i];
+        h.sway += h.swaySpeed;
+        h.x += h.vx + Math.sin(h.sway) * 1.5;
+        h.y += h.vy;
+        h.rotation += h.rotationSpeed;
+
+        if (h.y < -50) {
+          floatingHearts.splice(i, 1);
+          continue;
+        }
+
+        drawHeart(ctx, h.x, h.y, h.size, h.color, h.alpha, h.rotation);
+      }
+
+      // 6. Candle Smoke Puffs
+      for (let i = smokePuffs.length - 1; i >= 0; i--) {
+        const sm = smokePuffs[i];
+        sm.x += sm.vx;
+        sm.y += sm.vy;
+        sm.radius += (sm.maxRadius - sm.radius) * 0.05;
+        sm.alpha -= sm.decay;
+
+        if (sm.alpha <= 0) {
+          smokePuffs.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(sm.x, sm.y, sm.radius, 0, Math.PI * 2);
+        ctx.fillStyle = sm.color + sm.alpha + ')';
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // 7. Fireworks Rockets
+      for (let i = fireworksRockets.length - 1; i >= 0; i--) {
+        const r = fireworksRockets[i];
+        r.x += r.vx;
+        r.y += r.vy;
+
+        touchStars.push({
+          x: r.x,
+          y: r.y,
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: Math.random() * 2 + 1,
+          size: Math.random() * 3 + 1.5,
+          alpha: 0.9,
+          decay: 0.05,
+          rotation: 0,
+          color: '#FBBF24'
+        });
+
+        if (r.y <= r.targetY || r.vy >= 0) {
+          explodeFirework(r.x, r.y, r.color);
+          fireworksRockets.splice(i, 1);
+        }
+      }
+
+      // 8. Fireworks Sparks
+      for (let i = fireworksSparks.length - 1; i >= 0; i--) {
+        const sp = fireworksSparks[i];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.vy += sp.gravity;
+        sp.vx *= sp.drag;
+        sp.vy *= sp.drag;
+        sp.alpha -= sp.decay;
+
+        if (sp.alpha <= 0) {
+          fireworksSparks.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(sp.x, sp.y, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = sp.color;
+        let curAlpha = sp.alpha;
+        if (sp.flicker && Math.random() > 0.5) curAlpha *= 0.4;
+        ctx.globalAlpha = Math.max(0, curAlpha);
+        ctx.shadowColor = sp.color;
+        ctx.shadowBlur = 10;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+
+    /* -------------------------------------------------------------
+       SCREEN TRANSITIONS
+    ------------------------------------------------------------- */
+    function switchScreen(fromId, toId, callback) {
+      const fromEl = document.getElementById(fromId);
+      const toEl = document.getElementById(toId);
+      if (!fromEl || !toEl) return;
+
+      fromEl.classList.remove('screen-active');
+      fromEl.classList.add('screen-hidden');
+
+      setTimeout(() => {
+        toEl.classList.remove('screen-hidden');
+        toEl.classList.add('screen-active');
+        if (callback) callback();
+      }, 450);
+    }
+
+    function updatePINDots() {
+      for (let i = 0; i < 4; i++) {
+        const dot = document.getElementById(`pin-dot-${i}`);
+        if (i < enteredPIN.length) {
+          dot.className = "w-4 h-4 rounded-full border-2 border-rosegold-500 bg-gradient-to-r from-rosegold-500 to-pink-500 shadow-md shadow-rosegold-400/50 scale-110 transition-all duration-200";
+        } else {
+          dot.className = "w-4 h-4 rounded-full border-2 border-rosegold-500/50 bg-white/60 scale-100 transition-all duration-200";
+        }
+      }
+    }
+
+    function handleKeyPress(num) {
+      if (enteredPIN.length >= 4 || isTransitioning) return;
+      if (navigator.vibrate) navigator.vibrate(20);
+
+      enteredPIN += num;
+      updatePINDots();
+
+      if (enteredPIN.length === 4) {
+        verifyPIN();
+      }
+    }
+
+    function deleteDigit() {
+      if (enteredPIN.length === 0 || isTransitioning) return;
+      if (navigator.vibrate) navigator.vibrate(15);
+      enteredPIN = enteredPIN.slice(0, -1);
+      updatePINDots();
+    }
+
+    function clearPIN() {
+      if (isTransitioning) return;
+      enteredPIN = "";
+      updatePINDots();
+    }
+
+    function verifyPIN() {
+      if (enteredPIN === CORRECT_PIN) {
+        isTransitioning = true;
+        if (navigator.vibrate) navigator.vibrate([40, 60, 80]);
+
+        for (let i = 0; i < 4; i++) {
+          const dot = document.getElementById(`pin-dot-${i}`);
+          dot.className = "w-4 h-4 rounded-full border-2 border-emerald-400 bg-emerald-400 shadow-lg shadow-emerald-300 scale-125 transition-all duration-200";
+        }
+
+        const hintEl = document.getElementById('vault-hint');
+        hintEl.classList.remove('opacity-100');
+        hintEl.classList.add('opacity-0');
+
+        launchConfettiExplosion();
+
+        setTimeout(() => {
+          switchScreen('screen-1', 'screen-stage', () => {
+            currentScreen = 'stage';
+            isTransitioning = false;
+          });
+        }, 850);
+
+      } else {
+        if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
+        const vaultCard = document.getElementById('vault-card');
+        const hintEl = document.getElementById('vault-hint');
+
+        for (let i = 0; i < 4; i++) {
+          const dot = document.getElementById(`pin-dot-${i}`);
+          dot.className = "w-4 h-4 rounded-full border-2 border-rose-500 bg-rose-400 shadow-md shadow-rose-300 transition-all duration-150";
+        }
+
+        vaultCard.classList.add('shake-card');
+        hintEl.classList.remove('opacity-0', 'translate-y-1');
+        hintEl.classList.add('opacity-100', 'translate-y-0');
+
+        setTimeout(() => {
+          vaultCard.classList.remove('shake-card');
+          enteredPIN = "";
+          updatePINDots();
+        }, 900);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       STAGE SETUP LOGIC
+    ------------------------------------------------------------- */
+    function handleStageStep() {
+      if (isTransitioning) return;
+      if (navigator.vibrate) navigator.vibrate(25);
+
+      const title = document.getElementById('stage-title');
+      const desc = document.getElementById('stage-desc');
+      const btnIcon = document.getElementById('stage-btn-icon');
+      const btnText = document.getElementById('stage-btn-text');
+
+      if (stageStep === 1) {
+        // Step 1: Turn on Lights
+        const fairyLights = document.getElementById('fairy-lights-container');
+        fairyLights.style.opacity = '1';
+        document.getElementById('stage-step-1').className = "w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-emerald-200";
+        document.getElementById('stage-step-2').className = "w-2.5 h-2.5 rounded-full bg-rosegold-500";
+
+        title.textContent = "Music makes it better...";
+        desc.textContent = "Start the soft, charming celebration melody";
+        btnIcon.textContent = "🎵";
+        btnText.textContent = "Play Soft BGM";
+        stageStep = 2;
+
+      } else if (stageStep === 2) {
+        // Step 2: Play Soft BGM
+        bgmPlayer.start();
+        document.getElementById('stage-step-2').className = "w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-emerald-200";
+        document.getElementById('stage-step-3').className = "w-2.5 h-2.5 rounded-full bg-rosegold-500";
+
+        title.textContent = "Let the colors fly!";
+        desc.textContent = "Release the birthday balloons into the sky";
+        btnIcon.textContent = "🎈";
+        btnText.textContent = "Fly Balloons";
+        stageStep = 3;
+
+      } else if (stageStep === 3) {
+        // Step 3: Fly Balloons
+        launchBalloons();
+        document.getElementById('stage-step-3').className = "w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-emerald-200";
+        document.getElementById('stage-step-4').className = "w-2.5 h-2.5 rounded-full bg-rosegold-500";
+
+        title.textContent = "Almost there...";
+        desc.textContent = "Open the royal curtains for Chikkuuu!";
+        btnIcon.textContent = "🎭";
+        btnText.textContent = "Open Curtains";
+        stageStep = 4;
+
+      } else if (stageStep === 4) {
+        // Step 4: Restored Original Curtains Opening
+        isTransitioning = true;
+        const curtains = document.getElementById('curtains');
+        
+        curtains.classList.remove('curtains-open');
+        
+        setTimeout(() => {
+          switchScreen('screen-stage', 'screen-2', () => {
+            setTimeout(() => {
+              curtains.classList.add('curtains-open');
+              currentScreen = 2;
+              isTransitioning = false;
+              startGreetingTyping();
+            }, 300);
+          });
+        }, 400);
+      }
+    }
+
+    const GREETING_TEXT = "Happy Birthday to my bestest frnd chikkuuu [Asmita]! 🎉✨💖";
+
+    function startGreetingTyping() {
+      const headerEl = document.getElementById('typing-header');
+      const cursorEl = document.getElementById('typing-cursor');
+      const subEl = document.getElementById('greeting-sub');
+      headerEl.textContent = "";
+      cursorEl.style.display = "inline-block";
+
+      let index = 0;
+      function typeNextChar() {
+        if (index < GREETING_TEXT.length) {
+          headerEl.textContent += GREETING_TEXT.charAt(index);
+          index++;
+          setTimeout(typeNextChar, 45);
+        } else {
+          setTimeout(() => {
+            cursorEl.style.display = "none";
+            subEl.classList.remove('opacity-0');
+            subEl.classList.add('opacity-100');
+            // Wait for user to manually tap "Open Birthday Cake" button! No auto-advance.
+          }, 300);
+        }
+      }
+      setTimeout(typeNextChar, 350);
+    }
+
+    function triggerHeartsAndGoToCake() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      if (navigator.vibrate) navigator.vibrate(30);
+
+      launchHeartsFountain();
+
+      setTimeout(() => {
+        switchScreen('screen-2', 'screen-3', () => {
+          currentScreen = 3;
+          isTransitioning = false;
+        });
+      }, 950);
+    }
+
+    function blowCandle(index, svgX, svgY) {
+      if (blownCandles[index] || isTransitioning) return;
+      if (navigator.vibrate) navigator.vibrate(25);
+
+      blownCandles[index] = true;
+
+      const flame = document.getElementById(`flame-${index}`);
+      if (flame) {
+        flame.style.display = 'none';
+      }
+
+      const dot = document.getElementById(`dot-candle-${index}`);
+      if (dot) {
+        dot.textContent = '💨';
+        dot.classList.add('opacity-40', 'scale-90');
+      }
+
+      addCandleExtinguishEffects(svgX, svgY);
+
+      const remainingCount = blownCandles.filter(b => !b).length;
+      const counterText = document.getElementById('candles-counter-text');
+      if (counterText) {
+        counterText.textContent = remainingCount > 0 ? `${remainingCount} Candles Glowing` : `All Wishes Sealed for Asmita! ✨`;
+      }
+
+      const glowEl = document.getElementById('cake-ambient-glow');
+      if (glowEl) {
+        glowEl.style.opacity = (remainingCount / 5) * 0.8 + 0.2;
+        glowEl.style.filter = `blur(${16 + remainingCount * 4}px)`;
+      }
+
+      if (remainingCount === 0) {
+        isTransitioning = true;
+        
+        setTimeout(() => {
+          startFireworksShow();
+        }, 350);
+
+        setTimeout(() => {
+          switchScreen('screen-3', 'screen-4', () => {
+            currentScreen = 4;
+            isTransitioning = false;
+          });
+        }, 1600);
+      }
+    }
+
+    function toggleCardCaption(cardEl) {
+      const caption = cardEl.querySelector('.caption-overlay');
+      if (!caption) return;
+      if (navigator.vibrate) navigator.vibrate(15);
+      const isVisible = caption.classList.contains('opacity-100');
+      if (isVisible) {
+        caption.classList.remove('opacity-100');
+        caption.classList.add('opacity-0');
+      } else {
+        caption.classList.remove('opacity-0');
+        caption.classList.add('opacity-100');
+      }
+    }
+
+    function restartExperience() {
+      stopFireworksShow();
+      blownCandles = [false, false, false, false, false];
+      enteredPIN = "";
+      isTransitioning = false;
+      stageStep = 1;
+
+      document.getElementById('fairy-lights-container').style.opacity = '0';
+      document.getElementById('stage-title').textContent = "The Stage is Set...";
+      document.getElementById('stage-desc').textContent = "Tap each step to prepare Asmita's royal surprise!";
+      document.getElementById('stage-btn-icon').textContent = "💡";
+      document.getElementById('stage-btn-text').textContent = "Turn on Lights";
+      document.getElementById('stage-step-1').className = "w-2.5 h-2.5 rounded-full bg-rosegold-500";
+      document.getElementById('stage-step-2').className = "w-2.5 h-2.5 rounded-full bg-gray-300";
+      document.getElementById('stage-step-3').className = "w-2.5 h-2.5 rounded-full bg-gray-300";
+      document.getElementById('stage-step-4').className = "w-2.5 h-2.5 rounded-full bg-gray-300";
+
+      for (let i = 0; i < 5; i++) {
+        const flame = document.getElementById(`flame-${i}`);
+        if (flame) flame.style.display = 'block';
+        const dot = document.getElementById(`dot-candle-${i}`);
+        if (dot) {
+          dot.textContent = '🔥';
+          dot.classList.remove('opacity-40', 'scale-90');
+        }
+      }
+      const counterText = document.getElementById('candles-counter-text');
+      if (counterText) counterText.textContent = '5 Candles Glowing';
+      const glowEl = document.getElementById('cake-ambient-glow');
+      if (glowEl) {
+        glowEl.style.opacity = 1;
+        glowEl.style.filter = 'blur(32px)';
+      }
+
+      updatePINDots();
+
+      switchScreen('screen-4', 'screen-1', () => {
+        currentScreen = 1;
+      });
+    }
+  
+/* =======================================================
+       BOMB ROLLING, EXPLOSION & MOVIE CREDITS LOGIC
+       ======================================================= */
+    function playBombSoundFX() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        if (ctx.state === 'suspended') ctx.resume();
+
+        // 1. Fuse burning sizzle (2.2s)
+        const bufferSize = ctx.sampleRate * 2.2;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * 0.12;
+        }
+        const noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'highpass';
+        filter.frequency.setValueAtTime(1200, ctx.currentTime);
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.08, ctx.currentTime);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.2);
+        noise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(ctx.destination);
+        noise.start();
+
+        // 2. Blast Boom & Shockwave at 2.3s
+        setTimeout(() => {
+          const boomOsc = ctx.createOscillator();
+          const boomGain = ctx.createGain();
+          boomOsc.type = 'triangle';
+          boomOsc.frequency.setValueAtTime(160, ctx.currentTime);
+          boomOsc.frequency.exponentialRampToValueAtTime(25, ctx.currentTime + 1.2);
+          boomGain.gain.setValueAtTime(0.8, ctx.currentTime);
+          boomGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+          boomOsc.connect(boomGain);
+          boomGain.connect(ctx.destination);
+          boomOsc.start();
+          boomOsc.stop(ctx.currentTime + 1.2);
+
+          const blastBufferSize = ctx.sampleRate * 1.5;
+          const blastBuffer = ctx.createBuffer(1, blastBufferSize, ctx.sampleRate);
+          const blastData = blastBuffer.getChannelData(0);
+          for (let i = 0; i < blastBufferSize; i++) {
+            blastData[i] = (Math.random() * 2 - 1);
+          }
+          const blastNoise = ctx.createBufferSource();
+          blastNoise.buffer = blastBuffer;
+          const blastFilter = ctx.createBiquadFilter();
+          blastFilter.type = 'lowpass';
+          blastFilter.frequency.setValueAtTime(900, ctx.currentTime);
+          blastFilter.frequency.exponentialRampToValueAtTime(60, ctx.currentTime + 1.1);
+          const blastGain = ctx.createGain();
+          blastGain.gain.setValueAtTime(0.85, ctx.currentTime);
+          blastGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+          blastNoise.connect(blastFilter);
+          blastFilter.connect(blastGain);
+          blastGain.connect(ctx.destination);
+          blastNoise.start();
+        }, 2200);
+      } catch (e) {
+        console.log("Audio FX error", e);
+      }
+    }
+
+        function triggerBombAndCredits() {
+      const bombOverlay = document.getElementById('bomb-overlay');
+      const bombDimmer = document.getElementById('bomb-dimmer');
+      const rollingBomb = document.getElementById('rolling-bomb');
+      const blastFlash = document.getElementById('blast-flash');
+      const screenCredits = document.getElementById('screen-credits');
+      const mainContainer = document.querySelector('main') || document.body;
+
+      bombOverlay.classList.remove('hidden');
+      bombOverlay.classList.add('flex');
+      
+      playBombSoundFX();
+
+      setTimeout(() => {
+        bombDimmer.classList.remove('opacity-0');
+        bombDimmer.classList.add('opacity-100');
+      }, 50);
+
+      rollingBomb.style.animation = 'rollBombIn 2.0s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+
+      setTimeout(() => {
+        rollingBomb.style.animation = 'bombFuriousShake 0.35s infinite';
+      }, 2000);
+
+      // EXPLOSION (Clean, direct flash & blast — smoke removed)
+      setTimeout(() => {
+        mainContainer.classList.add('shake-impact');
+        setTimeout(() => mainContainer.classList.remove('shake-impact'), 650);
+
+        blastFlash.classList.remove('opacity-0');
+        blastFlash.classList.add('opacity-100');
+        blastFlash.style.background = 'radial-gradient(circle at center, #FFFFFF 0%, #FED7AA 40%, #FB923C 80%)';
+
+        rollingBomb.style.display = 'none';
+
+        setTimeout(() => {
+          blastFlash.classList.remove('opacity-100');
+          blastFlash.classList.add('opacity-0');
+        }, 220);
+
+      }, 2350);
+
+      // Transition straight into Hollywood movie credits screen (No smoke delay)
+      setTimeout(() => {
+        bombOverlay.classList.add('hidden');
+        bombOverlay.classList.remove('flex');
+
+        screenCredits.classList.remove('hidden');
+        screenCredits.classList.add('flex');
+        screenCredits.scrollTop = 0;
+
+        spawnCreditsGlitter();
+      }, 2650);
+    }
+
+    function spawnCreditsGlitter() {
+      const container = document.getElementById('glitter-container');
+      if (!container) return;
+      container.innerHTML = '';
+      
+      const colors = ['#FBBF24', '#F59E0B', '#F472B6', '#E879F9', '#FFFFFF', '#FDE047'];
+      for (let i = 0; i < 50; i++) {
+        const span = document.createElement('span');
+        const size = Math.random() * 5 + 3;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const left = Math.random() * 100;
+        const duration = Math.random() * 4 + 3;
+        const delay = Math.random() * 4;
+
+        span.style.cssText = `
+          position: absolute;
+          left: ${left}%;
+          bottom: -20px;
+          width: ${size}px;
+          height: ${size}px;
+          border-radius: 50%;
+          background: ${color};
+          box-shadow: 0 0 ${size * 2}px ${color};
+          animation: goldGlitterFloat ${duration}s linear ${delay}s infinite;
+          opacity: 0;
+        `;
+        container.appendChild(span);
+      }
+    }
+
+    function restartExperienceFromCredits() {
+      const screenCredits = document.getElementById('screen-credits');
+      screenCredits.classList.add('hidden');
+      screenCredits.classList.remove('flex');
+
+      const rollingBomb = document.getElementById('rolling-bomb');
+      if (rollingBomb) {
+        rollingBomb.style.display = 'block';
+        rollingBomb.style.animation = '';
+        rollingBomb.style.left = '-140px';
+      }
+
+      restartExperience();
+    }
+
+    function closeCreditsBackToNote() {
+      const screenCredits = document.getElementById('screen-credits');
+      screenCredits.classList.add('hidden');
+      screenCredits.classList.remove('flex');
+
+      const rollingBomb = document.getElementById('rolling-bomb');
+      if (rollingBomb) {
+        rollingBomb.style.display = 'block';
+        rollingBomb.style.animation = '';
+        rollingBomb.style.left = '-140px';
+      }
+
+      const s4 = document.getElementById('screen-4');
+      s4.classList.remove('screen-hidden');
+    }
+
+    /* =======================================================
+       REVIEW US & STAR REMARK SYSTEM
+       ======================================================= */
+    let selectedRating = 5;
+    const ratingLabels = [
+      "",
+      "1/5: Needs Improvement 😅",
+      "2/5: Okay Okay Bestie 🙂",
+      "3/5: Good Job Yash! 🌸",
+      "4/5: Loved It So Much! ✨",
+      "5/5: 100/10 ABSOLUTE MASTERPIECE! 👑🎉"
+    ];
+
+    function goToReviewScreen() {
+      const screenCredits = document.getElementById('screen-credits');
+      const screenReview = document.getElementById('screen-review');
+
+      screenCredits.classList.add('hidden');
+      screenCredits.classList.remove('flex');
+
+      screenReview.classList.remove('hidden');
+      screenReview.classList.add('flex');
+      screenReview.scrollTop = 0;
+
+      initReviewScreen();
+    }
+
+    function closeReviewBackToCredits() {
+      const screenCredits = document.getElementById('screen-credits');
+      const screenReview = document.getElementById('screen-review');
+
+      screenReview.classList.add('hidden');
+      screenReview.classList.remove('flex');
+
+      screenCredits.classList.remove('hidden');
+      screenCredits.classList.add('flex');
+    }
+
+    function initReviewScreen() {
+      const savedRating = localStorage.getItem('asmita_review_rating');
+      const savedRemark = localStorage.getItem('asmita_review_text');
+
+      if (savedRating && savedRemark) {
+        showSavedReviewCard(savedRating, savedRemark);
+      } else {
+        setReviewRating(5);
+      }
+    }
+
+    function setReviewRating(star) {
+      selectedRating = star;
+      updateStarButtons(star);
+      const verdict = document.getElementById('rating-verdict');
+      if (verdict) verdict.textContent = ratingLabels[star];
+    }
+
+    function previewStars(star) {
+      updateStarButtons(star);
+      const verdict = document.getElementById('rating-verdict');
+      if (verdict) verdict.textContent = ratingLabels[star];
+    }
+
+    function resetStarPreview() {
+      updateStarButtons(selectedRating);
+      const verdict = document.getElementById('rating-verdict');
+      if (verdict) verdict.textContent = ratingLabels[selectedRating];
+    }
+
+    function updateStarButtons(count) {
+      document.querySelectorAll('.star-btn').forEach(btn => {
+        const val = parseInt(btn.getAttribute('data-star'));
+        if (val <= count) {
+          btn.style.color = '#FBBF24';
+          btn.style.textShadow = '0 0 16px rgba(251, 191, 36, 0.9)';
+          btn.style.opacity = '1';
+        } else {
+          btn.style.color = '#4B5563';
+          btn.style.textShadow = 'none';
+          btn.style.opacity = '0.4';
+        }
+      });
+    }
+
+    function submitReview() {
+      const remarkInput = document.getElementById('review-remark-input');
+      const remarkText = (remarkInput ? remarkInput.value.trim() : '') || "Yash you made the best birthday surprise ever! 💖";
+
+      localStorage.setItem('asmita_review_rating', selectedRating.toString());
+      localStorage.setItem('asmita_review_text', remarkText);
+      localStorage.setItem('asmita_review_time', new Date().toISOString());
+
+      if (typeof launchConfettiExplosion === 'function') launchConfettiExplosion();
+      if (typeof launchHeartsFountain === 'function') launchHeartsFountain();
+
+      showSavedReviewCard(selectedRating, remarkText);
+    }
+
+    function showSavedReviewCard(rating, text) {
+      const formCard = document.getElementById('review-form-card');
+      const successCard = document.getElementById('review-success-card');
+      const starsDisp = document.getElementById('saved-stars-display');
+      const remarkDisp = document.getElementById('saved-remark-display');
+
+      if (formCard) formCard.classList.add('hidden');
+      if (successCard) successCard.classList.remove('hidden');
+
+      const r = parseInt(rating) || 5;
+      if (starsDisp) {
+        starsDisp.textContent = '★'.repeat(r) + '☆'.repeat(5 - r);
+      }
+      if (remarkDisp) {
+        remarkDisp.textContent = `“${text}”`;
+      }
+    }
+
+    
+    function deleteReview() {
+      localStorage.removeItem('asmita_review_rating');
+      localStorage.removeItem('asmita_review_text');
+      localStorage.removeItem('asmita_review_time');
+
+      const formCard = document.getElementById('review-form-card');
+      const successCard = document.getElementById('review-success-card');
+      const remarkInput = document.getElementById('review-remark-input');
+
+      if (remarkInput) remarkInput.value = '';
+      setReviewRating(5);
+
+      if (successCard) successCard.classList.add('hidden');
+      if (formCard) formCard.classList.remove('hidden');
+    }
+
+    function editReview() {
+      const formCard = document.getElementById('review-form-card');
+      const successCard = document.getElementById('review-success-card');
+      const remarkInput = document.getElementById('review-remark-input');
+
+      const savedRemark = localStorage.getItem('asmita_review_text') || '';
+      if (remarkInput) remarkInput.value = savedRemark;
+
+      if (formCard) formCard.classList.remove('hidden');
+      if (successCard) successCard.classList.add('hidden');
+    }
+
+    function shareReviewOnWhatsApp() {
+      const rating = localStorage.getItem('asmita_review_rating') || '5';
+      const text = localStorage.getItem('asmita_review_text') || '';
+      const r = parseInt(rating) || 5;
+      const stars = '⭐'.repeat(r);
+
+      const msg = `Hey Yash! Here is my official review for the birthday surprise web app 🎂✨:
+
+Rating: ${stars} (${r}/5)
+Remark: "${text}"
+
+- Asmita 💖`;
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    function restartExperienceFromReview() {
+      const screenReview = document.getElementById('screen-review');
+      screenReview.classList.add('hidden');
+      screenReview.classList.remove('flex');
+
+      restartExperienceFromCredits();
+    }
+  
+
+/* =======================================================
+       SECRET UNLOCK SEQUENCE (BOMB 2 -> RACE -> SURVIVAL -> BUDDHAPA -> CLOSE)
+       ======================================================= */
+    function triggerSecretUnlock() {
+      // Hide review screen
+      const screenReview = document.getElementById('screen-review');
+      screenReview.classList.add('hidden');
+      screenReview.classList.remove('flex');
+
+      // Trigger Bomb 2
+      const bombOverlay = document.getElementById('bomb-overlay');
+      const rollingBomb = document.getElementById('rolling-bomb');
+      const blastFlash = document.getElementById('blast-flash');
+      const bombDimmer = document.getElementById('bomb-dimmer');
+      const mainContainer = document.querySelector('main') || document.body;
+
+      bombOverlay.classList.remove('hidden');
+      bombOverlay.classList.add('flex');
+      rollingBomb.style.display = 'block';
+      rollingBomb.style.left = '-140px';
+
+      playBombSoundFX();
+
+      setTimeout(() => {
+        bombDimmer.classList.remove('opacity-0');
+        bombDimmer.classList.add('opacity-100');
+      }, 50);
+
+      rollingBomb.style.animation = 'rollBombIn 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+
+      setTimeout(() => {
+        rollingBomb.style.animation = 'bombFuriousShake 0.35s infinite';
+      }, 1800);
+
+      // BOOM at 2.1s
+      setTimeout(() => {
+        mainContainer.classList.add('shake-impact');
+        setTimeout(() => mainContainer.classList.remove('shake-impact'), 650);
+
+        blastFlash.classList.remove('opacity-0');
+        blastFlash.classList.add('opacity-100');
+        rollingBomb.style.display = 'none';
+
+        setTimeout(() => {
+          blastFlash.classList.remove('opacity-100');
+          blastFlash.classList.add('opacity-0');
+        }, 220);
+      }, 2150);
+
+      // Reveal Sperm Race Screen at 2.4s
+      setTimeout(() => {
+        bombOverlay.classList.add('hidden');
+        bombOverlay.classList.remove('flex');
+
+        startSpermRaceSequence();
+      }, 2450);
+    }
+
+    /* -------------------------------------------------------------
+       SPERM RACE ANIMATION ENGINE (CANVAS)
+    ------------------------------------------------------------- */
+    let raceAnimationId = null;
+    let raceTimerInterval = null;
+
+    function startSpermRaceSequence() {
+      const screenRace = document.getElementById('screen-race');
+      screenRace.classList.remove('hidden');
+      screenRace.classList.add('flex');
+
+      const canvas = document.getElementById('race-canvas');
+      const ctx = canvas.getContext('2d');
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width || 400;
+      canvas.height = rect.height || 300;
+
+      const finishX = canvas.width - 65;
+      const swimmers = [];
+      const numSwimmers = 14;
+
+      // Champion is swimmer #0 (wears golden crown!)
+      for (let i = 0; i < numSwimmers; i++) {
+        const laneY = 35 + (i * ((canvas.height - 70) / (numSwimmers - 1)));
+        swimmers.push({
+          x: 20 + Math.random() * 25,
+          y: laneY,
+          baseY: laneY,
+          speed: (i === 0) ? 2.6 : (1.4 + Math.random() * 0.9),
+          tailPhase: Math.random() * Math.PI * 2,
+          isChampion: (i === 0),
+          color: (i === 0) ? '#FDE047' : '#E2E8F0',
+          hasFinished: false
+        });
+      }
+
+      let raceStartTime = Date.now();
+      let winnerTriggered = false;
+
+      function drawSwimmer(s, time) {
+        ctx.save();
+        ctx.translate(s.x, s.y);
+
+        // Body
+        ctx.fillStyle = s.color;
+        ctx.shadowColor = s.isChampion ? '#F59E0B' : '#94A3B8';
+        ctx.shadowBlur = s.isChampion ? 16 : 6;
+        
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 11, 7, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Cute eyes on Champion
+        if (s.isChampion) {
+          ctx.fillStyle = '#000000';
+          ctx.beginPath();
+          ctx.arc(3, -2, 1.8, 0, Math.PI * 2);
+          ctx.arc(3, 2, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Tiny Crown on head
+          ctx.fillStyle = '#FBBF24';
+          ctx.beginPath();
+          ctx.moveTo(-2, -7);
+          ctx.lineTo(1, -12);
+          ctx.lineTo(4, -8);
+          ctx.lineTo(7, -12);
+          ctx.lineTo(10, -7);
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        // Wiggling Tail (Sine wave)
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = s.color;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(-10, 0);
+        for (let j = 0; j < 24; j += 4) {
+          const wave = Math.sin((time * 0.02) + s.tailPhase - (j * 0.3)) * (j * 0.35);
+          ctx.lineTo(-10 - j, wave);
+        }
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      function renderRace() {
+        const time = Date.now() - raceStartTime;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Finish Line Ribbon
+        ctx.strokeStyle = '#F43F5E';
+        ctx.lineWidth = 4;
+        ctx.setLineDash([6, 6]);
+        ctx.beginPath();
+        ctx.moveTo(finishX, 10);
+        ctx.lineTo(finishX, canvas.height - 10);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Egg Trophy Target at finish line
+        ctx.save();
+        ctx.translate(finishX + 25, canvas.height / 2);
+        ctx.fillStyle = '#F472B6';
+        ctx.shadowColor = '#F43F5E';
+        ctx.shadowBlur = 20;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 22, 28, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '16px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('🏆', 0, 0);
+        ctx.restore();
+
+        // Update & Draw swimmers
+        swimmers.forEach(s => {
+          if (!s.hasFinished) {
+            // Champion accelerates smoothly past others
+            if (s.isChampion && s.x > canvas.width * 0.45) {
+              s.speed = Math.min(s.speed + 0.05, 4.2);
+            }
+            s.x += s.speed;
+            s.y = s.baseY + Math.sin(time * 0.005 + s.tailPhase) * 4;
+
+            if (s.x >= finishX) {
+              s.hasFinished = true;
+              if (s.isChampion && !winnerTriggered) {
+                winnerTriggered = true;
+                onChampionWinsRace();
+              }
+            }
+          }
+          drawSwimmer(s, time);
+        });
+
+        if (!winnerTriggered || Date.now() - raceStartTime < 12000) {
+          raceAnimationId = requestAnimationFrame(renderRace);
+        }
+      }
+
+      renderRace();
+    }
+
+    function onChampionWinsRace() {
+      // Sound FX & Confetti
+      if (typeof launchConfettiExplosion === 'function') launchConfettiExplosion();
+      if (typeof launchHeartsFountain === 'function') launchHeartsFountain();
+
+      const banner = document.getElementById('winner-banner');
+      banner.classList.remove('opacity-0', 'scale-90');
+      banner.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+      // No auto cut! The user taps "NEXT: SURVIVAL RECORD" button whenever they want.
+    }
+
+    /* -------------------------------------------------------------
+       SURVIVAL COUNTER ENGINE (BORN: 6 OCT 2009)
+    ------------------------------------------------------------- */
+    let survivalInterval = null;
+    const BORN_DATE = new Date("2009-10-06T00:00:00+05:30");
+
+    function goToSurvivalScreen() {
+      if (raceAnimationId) cancelAnimationFrame(raceAnimationId);
+      if (raceTimerInterval) clearInterval(raceTimerInterval);
+
+      const screenRace = document.getElementById('screen-race');
+      const screenSurvival = document.getElementById('screen-survival');
+
+      screenRace.classList.add('hidden');
+      screenRace.classList.remove('flex');
+
+      screenSurvival.classList.remove('hidden');
+      screenSurvival.classList.add('flex');
+      screenSurvival.scrollTop = 0;
+
+      updateSurvivalCounter();
+      if (survivalInterval) clearInterval(survivalInterval);
+      survivalInterval = setInterval(updateSurvivalCounter, 1000);
+    }
+
+    function updateSurvivalCounter() {
+      const now = new Date();
+      const diffMs = now - BORN_DATE;
+
+      const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+      const totalMinutes = Math.floor(diffMs / (1000 * 60));
+      const totalSeconds = Math.floor(diffMs / 1000);
+
+      const daysEl = document.getElementById('counter-days');
+      const hoursEl = document.getElementById('counter-hours');
+      const minutesEl = document.getElementById('counter-minutes');
+      const secondsEl = document.getElementById('counter-seconds');
+      const approxEl = document.getElementById('counter-days-approx');
+
+      if (daysEl) daysEl.textContent = totalDays.toLocaleString('en-IN');
+      if (hoursEl) hoursEl.textContent = totalHours.toLocaleString('en-IN');
+      if (minutesEl) minutesEl.textContent = totalMinutes.toLocaleString('en-IN');
+      if (secondsEl) secondsEl.textContent = totalSeconds.toLocaleString('en-IN');
+      if (approxEl) approxEl.textContent = totalDays.toLocaleString('en-IN') + '+ days';
+    }
+
+    /* -------------------------------------------------------------
+       BUDDHAPA SCREEN
+    ------------------------------------------------------------- */
+    function goToBuddhapaScreen() {
+      const screenSurvival = document.getElementById('screen-survival');
+      const screenBuddhapa = document.getElementById('screen-buddhapa');
+
+      screenSurvival.classList.add('hidden');
+      screenSurvival.classList.remove('flex');
+
+      screenBuddhapa.classList.remove('hidden');
+      screenBuddhapa.classList.add('flex');
+      screenBuddhapa.scrollTop = 0;
+    }
+
+    /* -------------------------------------------------------------
+       CLOSING SCREEN & AUTO-CLOSE
+    ------------------------------------------------------------- */
+    let closeCountdownInterval = null;
+
+    function goToClosingScreen() {
+      const screenBuddhapa = document.getElementById('screen-buddhapa');
+      const screenClosing = document.getElementById('screen-closing');
+
+      screenBuddhapa.classList.add('hidden');
+      screenBuddhapa.classList.remove('flex');
+
+      screenClosing.classList.remove('hidden');
+      screenClosing.classList.add('flex');
+      screenClosing.scrollTop = 0;
+
+      // Countdown from 10 down to 1 then close (User requested 10s)
+      let timeLeft = 10;
+      const digitEl = document.getElementById('close-timer-digit');
+
+      if (closeCountdownInterval) clearInterval(closeCountdownInterval);
+      closeCountdownInterval = setInterval(() => {
+        timeLeft--;
+        if (digitEl) digitEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(closeCountdownInterval);
+          executeTabClose();
+        }
+      }, 1000);
+    }
+
+    function executeTabClose() {
+      // Attempt window.close
+      try {
+        window.open('', '_self', '');
+        window.close();
+      } catch (e) {
+        console.log("window.close prevented by browser policy", e);
+      }
+
+      // Show blackout theater end screen
+      const blackout = document.getElementById('final-blackout');
+      if (blackout) blackout.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
